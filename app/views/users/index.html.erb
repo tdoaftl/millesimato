@@ -1,0 +1,5 @@
+
+my page
+ciao <%= current_user.nickname %>
+<%= link_to 'ユーザー情報登録', new_user_path, class: "sign-up" %>
+<%= link_to 'ユーザー情報詳細', user_path(current_user), class: "sign-up" %>
