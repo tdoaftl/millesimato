@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_01_14_093843) do
+ActiveRecord::Schema[7.0].define(version: 2025_01_14_102952) do
   create_table "infomations", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "last_name", null: false
     t.string "first_name", null: false
@@ -28,6 +28,23 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_14_093843) do
     t.index ["user_id"], name: "index_infomations_on_user_id"
   end
 
+  create_table "information", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "last_name_kana", null: false
+    t.string "first_name_kana", null: false
+    t.string "postcode", null: false
+    t.integer "prefecture_id", null: false
+    t.string "city", null: false
+    t.string "address", null: false
+    t.string "building"
+    t.string "phone_number", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_information_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -42,4 +59,5 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_14_093843) do
   end
 
   add_foreign_key "infomations", "users"
+  add_foreign_key "information", "users"
 end
