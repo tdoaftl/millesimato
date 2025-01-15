@@ -1,6 +1,5 @@
-
-my page<br>
-ciao <%= current_user.nickname %><br><br>
+マイページ<br>
+ciao <%= current_user.nickname %>さん<br><br>
  <%= link_to 'ログイン情報詳細編集', edit_user_registration_path%>
 <% if current_user.information.present? %>
 <%= link_to 'ユーザー情報詳細編集', edit_information_users_path, class: "sign-up" %>

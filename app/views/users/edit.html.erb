@@ -4,27 +4,25 @@
 
       <%= f.text_field :last_name,  placeholder:"例) 山田" %>
      <%= f.text_field :first_name,  placeholder:"例) 陸太郎" %>
-
+<br>
       <%= f.text_field :last_name_kana, placeholder:"例) ヤマダ" %>
      <%= f.text_field :first_name_kana, placeholder:"例) リクタロウ" %>
-
+<br>
           <%= raw sprintf(
                   f.date_select(
                     :birthday,
-                    class:'select-birth',
-                    id:"birth-date",
                     use_month_numbers: true,
                     prompt:'--',
                     start_year: 1930,
                     end_year: (Time.now.year - 5),
                     date_separator: '%s'),
-                  "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+                  " 年 ", " 月 ") + " 日 " %>
 
-      <%= f.text_field :post_code,  placeholder:"例) 〒" %>
-      <%= f.text_field :prefecture_id,  placeholder:"例) 都道府県" %>
-      <%= f.text_field :city,  placeholder:"例) 市区町村" %>
-      <%= f.text_field :address,  placeholder:"例) 住所" %>
-      <%= f.text_field :building,  placeholder:"例) 建物" %>
-      <%= f.text_field :phone_number, placeholder:"例) 電話番号" %>
-      <%= f.submit "変更する" ,class:"register-red-btn" %> 
+<br>      <%= f.text_field :post_code,  placeholder:"例) 〒" %>
+ <br>     <%= f.text_field :prefecture_id,  placeholder:"例) 都道府県" %>
+  <br>    <%= f.text_field :city,  placeholder:"例) 市区町村" %>
+ <br>     <%= f.text_field :address,  placeholder:"例) 住所" %>
+  <br>    <%= f.text_field :building,  placeholder:"例) 建物" %>
+  <br>    <%= f.text_field :phone_number, placeholder:"例) 電話番号" %>
+  <br>    <%= f.submit "変更" ,class:"register-red-btn" %> 
  <% end %> 
