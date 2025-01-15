@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "clothings#index"
-  resources :clothings, only: :index
+  resources :clothings, only: [:index, :new, :create]
 
     resources :users , only: [:index] do
       collection do
