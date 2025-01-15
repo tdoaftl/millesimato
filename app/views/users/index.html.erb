@@ -1,5 +1,9 @@
 
-my page
-ciao <%= current_user.nickname %>
-<%= link_to 'ユーザー情報登録', new_user_path, class: "sign-up" %>
-<%= link_to 'ユーザー情報詳細', user_path(current_user), class: "sign-up" %>
+my page<br>
+ciao <%= current_user.nickname %><br><br>
+ <%= link_to 'ログイン情報詳細編集', edit_user_registration_path%>
+<% if current_user.information.present? %>
+<%= link_to 'ユーザー情報詳細編集', edit_information_users_path, class: "sign-up" %>
+<% else %>
+<%= link_to 'ユーザー情報登録', new_information_users_path, class: "sign-up" %>
+<% end %>
