@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_01_14_115459) do
+ActiveRecord::Schema[7.0].define(version: 2025_01_15_082214) do
+  create_table "clothings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "item", null: false
+    t.string "description", null: false
+    t.integer "price", null: false
+    t.string "brand", null: false
+    t.string "age", null: false
+    t.string "category", null: false
+    t.string "condition", null: false
+    t.string "size", null: false
+    t.string "color", null: false
+    t.string "material", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_clothings_on_user_id"
+  end
+
   create_table "information", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "last_name", null: false
     t.string "first_name", null: false
@@ -42,5 +59,6 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_14_115459) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "clothings", "users"
   add_foreign_key "information", "users"
 end
