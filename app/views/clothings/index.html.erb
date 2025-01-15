@@ -2,3 +2,8 @@
 トップページ<br>
 ciao<br>
 <%= link_to '商品登録', new_clothing_path%>
+<br><br>
+商品一覧
+<% @clothings.each do |clothing| %>
+    <br> <%= clothing.item %><br>
+<% end %>
