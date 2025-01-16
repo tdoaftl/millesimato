@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_01_16_021502) do
+ActiveRecord::Schema[7.0].define(version: 2025_01_16_051445) do
   create_table "clothings", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "item", null: false
     t.string "description", null: false
@@ -26,6 +26,23 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_16_021502) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_clothings_on_user_id"
+  end
+
+  create_table "deliveries", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "last_name_kana", null: false
+    t.string "first_name_kana", null: false
+    t.string "postcode", null: false
+    t.integer "prefecture_id", null: false
+    t.string "city", null: false
+    t.string "address", null: false
+    t.string "building"
+    t.string "phone_number", null: false
+    t.bigint "purchase_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["purchase_id"], name: "index_deliveries_on_purchase_id"
   end
 
   create_table "information", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -69,6 +86,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_16_021502) do
   end
 
   add_foreign_key "clothings", "users"
+  add_foreign_key "deliveries", "purchases"
   add_foreign_key "information", "users"
   add_foreign_key "purchases", "clothings"
   add_foreign_key "purchases", "users"
