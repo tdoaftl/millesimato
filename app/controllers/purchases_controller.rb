@@ -1,6 +1,7 @@
 class PurchasesController < ApplicationController
   def new
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
+
     @clothing = Clothing.find(params[:clothing_id])
     user_information = current_user.information
     @purchase_delivery = PurchaseDelivery.new(

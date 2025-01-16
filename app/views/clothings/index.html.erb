@@ -6,6 +6,8 @@ ciao<br>
 商品一覧
 <% @clothings.each do |clothing| %>
     <br> <%= link_to clothing_path(clothing.id) do %>
-    <%= clothing.item %><br>
+<div class="product-list">
+  <div class="product fade-in"> <%= clothing.item %> </div>
+</div>
     <% end %>
 <% end %>
