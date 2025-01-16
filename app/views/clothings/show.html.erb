@@ -11,4 +11,4 @@
   <br>    <%= @clothing.size %>
  <br>     <%= @clothing.color %>
   <br>    <%= @clothing.material %>
-  <br>購入へ進む
+  <br><%= link_to "購入へ進む", new_clothing_purchase_path(@clothing)%>

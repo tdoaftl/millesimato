@@ -1,0 +1,32 @@
+<%= include_gon %>
+購入画面<br>
+<%= form_with model: @purchase_delivery, url: clothing_purchases_path(@clothing), id: 'charge-form', local: true do |f| %>
+  <%= f.text_field :last_name, placeholder: '姓' %>
+  <%= f.text_field :first_name, placeholder: '名' %>
+  <%= f.text_field :last_name_kana, placeholder: 'セイ' %>
+  <%= f.text_field :first_name_kana, placeholder: 'メイ' %>
+  <%= f.text_field :post_code, placeholder: '郵便番号' %>
+  <%= f.text_field :prefecture_id, placeholder: '都道府県' %>
+  <%= f.text_field :city, placeholder: '市区町村' %>
+  <%= f.text_field :address, placeholder: '住所' %>
+  <%= f.text_field :building, placeholder: '建物名' %>
+  <%= f.text_field :phone_number, placeholder: '電話番号' %>
+  
+ <%= f.check_box :update_information, value: '1' %>
+  <%= f.label :update_information, 'この情報をユーザー情報に反映する' %>
+
+    <div class='form-wrap'>
+    <p>カード番号</p>
+    <div id="number-form" class="input-default"></div>
+  </div>
+  <div class='form-wrap'>
+    <p>期限</p>
+    <div id="expiry-form" class="input-default"></div>
+  </div>
+  <div class='form-wrap'>
+    <p>カード背面4桁もしくは3桁の番号</p>
+    <div id="cvc-form" class="input-default"></div>
+  </div>
+
+  <%= f.submit '購入を確定する' %>
+<% end %>
