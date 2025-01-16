@@ -5,9 +5,9 @@ ciao<br>
 <br><br>
 商品一覧
 <% @clothings.each do |clothing| %>
-    <br> <%= link_to clothing_path(clothing.id) do %>
+ <%= link_to clothing_path(clothing.id) do %>
 <div class="product-list">
-  <div class="product fade-in"> <%= clothing.item %> </div>
+  <div class="product fade-in"> <%= image_tag clothing.image, class: "item-img"  if clothing.image.attached? %> </div>
 </div>
     <% end %>
 <% end %>

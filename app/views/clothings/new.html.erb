@@ -1,7 +1,7 @@
 商品登録<br>
  <%= form_with model: @clothing, local: true do |f| %> 
-
-      <%= f.text_field :item,  placeholder:"アイテム" %>
+ <%= f.file_field :image %>
+  <br>     <%= f.text_field :item,  placeholder:"アイテム" %>
  <br>    <%= f.text_field :description,  placeholder:"説明" %>
 <br> <%= f.text_field :price,  placeholder:"金額" %>
  <br>     <%= f.text_field :brand, placeholder:"ブランド" %>
