@@ -33,7 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_16_051445) do
     t.string "first_name", null: false
     t.string "last_name_kana", null: false
     t.string "first_name_kana", null: false
-    t.string "postcode", null: false
+    t.string "post_code", null: false
     t.integer "prefecture_id", null: false
     t.string "city", null: false
     t.string "address", null: false
@@ -46,17 +46,16 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_16_051445) do
   end
 
   create_table "information", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "last_name", null: false
-    t.string "first_name", null: false
-    t.string "last_name_kana", null: false
-    t.string "first_name_kana", null: false
-    t.string "post_code", null: false
-    t.integer "prefecture_id", null: false
-    t.string "city", null: false
-    t.string "address", null: false
+    t.string "last_name"
+    t.string "first_name"
+    t.string "last_name_kana"
+    t.string "first_name_kana"
+    t.string "post_code"
+    t.integer "prefecture_id"
+    t.string "city"
+    t.string "address"
     t.string "building"
-    t.string "phone_number", null: false
-    t.date "birthday", null: false
+    t.string "phone_number"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -76,6 +75,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_16_051445) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "nickname", null: false
+    t.date "birthday", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

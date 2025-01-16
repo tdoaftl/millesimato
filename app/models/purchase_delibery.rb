@@ -1,3 +1,0 @@
-class PurchaseDelivery
-
-end

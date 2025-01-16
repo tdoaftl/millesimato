@@ -73,6 +73,8 @@ end
 
 gem 'devise'
 gem 'pry-rails'
+gem 'payjp'
+gem 'gon'
 
 group :production do
   gem 'pg'
