@@ -5,5 +5,7 @@ ciao<br>
 <br><br>
 商品一覧
 <% @clothings.each do |clothing| %>
-    <br> <%= clothing.item %><br>
+    <br> <%= link_to clothing_path(clothing.id) do %>
+    <%= clothing.item %><br>
+    <% end %>
 <% end %>

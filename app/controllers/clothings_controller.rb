@@ -15,6 +15,29 @@ class ClothingsController < ApplicationController
     end
   end
 
+  def show
+    @clothing = Clothing.find(params[:id])
+  end
+
+  def edit
+    @clothing = Clothing.find(params[:id])
+  end
+
+  def update
+    @clothing = Clothing.find(params[:id])
+    if @clothing.update(item_params)
+      redirect_to clothing_path
+    else
+      
+    end
+  end  
+
+  def destroy
+    clothing = Clothing.find(params[:id])
+    clothing.destroy
+    redirect_to root_path 
+  end
+
   private
 
   def item_params
