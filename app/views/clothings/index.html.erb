@@ -1,4 +1,11 @@
 <%= render "shared/header" %>
 トップページ<br>
-
-ciao
+ciao<br>
+<%= link_to '商品登録', new_clothing_path%>
+<br><br>
+商品一覧
+<% @clothings.each do |clothing| %>
+    <br> <%= link_to clothing_path(clothing.id) do %>
+    <%= clothing.item %><br>
+    <% end %>
+<% end %>

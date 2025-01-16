@@ -1,0 +1,14 @@
+商品詳細<br>
+<%= link_to '商品編集', edit_clothing_path%><br>
+ <%= link_to "削除", clothing_path, data: {turbo_method: :delete} %>
+      <%= @clothing.item %>
+ <br>    <%= @clothing.description %>
+<br> <%= @clothing.price %>
+ <br>     <%= @clothing.brand%>
+ <br>    <%= @clothing.age %>
+<br>      <%= @clothing.category%>
+ <br>     <%= @clothing.condition %>
+  <br>    <%= @clothing.size %>
+ <br>     <%= @clothing.color %>
+  <br>    <%= @clothing.material %>
+  <br>購入へ進む

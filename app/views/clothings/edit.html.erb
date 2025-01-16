@@ -1,0 +1,15 @@
+商品編集<br>
+ <%= form_with model: @clothing, local: true do |f| %> 
+
+      <%= f.text_field :item,  placeholder:"アイテム" %>
+ <br>    <%= f.text_field :description,  placeholder:"説明" %>
+<br> <%= f.text_field :price,  placeholder:"金額" %>
+ <br>     <%= f.text_field :brand, placeholder:"ブランド" %>
+ <br>    <%= f.text_field :age, placeholder:"年代" %>
+<br>      <%= f.text_field :category,  placeholder:"カテゴリー" %>
+ <br>     <%= f.text_field :condition,  placeholder:"コンディション" %>
+  <br>    <%= f.text_field :size,  placeholder:"サイズ" %>
+ <br>     <%= f.text_field :color,  placeholder:"サイズ" %>
+  <br>    <%= f.text_field :material,  placeholder:"素材" %>
+  <br>    <%= f.submit "編集する" ,class:"register-red-btn" %> 
+ <% end %> 
