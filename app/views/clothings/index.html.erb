@@ -1,13 +1,31 @@
 <%= render "shared/header" %>
-トップページ<br>
-ciao<br>
-<%= link_to '商品登録', new_clothing_path%>
-<br><br>
-商品一覧
-<% @clothings.each do |clothing| %>
-    <br> <%= link_to clothing_path(clothing.id) do %>
-<div class="product-list">
-  <div class="product fade-in"> <%= clothing.item %> </div>
+<h1>トップページ</h1>
+<%= link_to '商品登録', new_clothing_path %>
+  <div id="price-range-slider" style="margin: 20px auto;"></div>
+<p>価格範囲: ¥<span id="min-price-value">1000</span> 〜 ¥<span id="max-price-value">23000</span></p>
+
+  <div id="product-count" style="margin: 10px 0;">
+  <!-- 商品数がここに表示されます -->
 </div>
-    <% end %>
-<% end %>
+  
+
+ <div id="product-list">
+  <!-- 商品がここに表示されます -->
+
+  <!-- 他の商品の要素も続きます -->
+</div>
+
+
+
+<%# <div id="clothing-list"> %>
+<%#  <% @clothings.each do |clothing| %>
+<%#    <div class="clothing-item">
+      <p>価格: ¥<%= clothing.price %><%#</p>
+ <%#         <% if clothing.image.attached? %>
+ <%#     <%= image_tag clothing.image,  class: "item-img" %>
+<%#    <% else %>
+ <%#     <p>画像なし</p>
+    </div>
+  <% end %>
+<%# </div> %>
+<%# <% end %> 
