@@ -1,6 +1,8 @@
 class ClothingsController < ApplicationController
   def index
-    @clothings = Clothing.all
+    if current_user&.admin?
+       @clothings = Clothing.all
+    end
   end
 
   def new
