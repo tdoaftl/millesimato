@@ -38,6 +38,22 @@ class ClothingsController < ApplicationController
     redirect_to root_path 
   end
 
+  def search
+    min_price = params[:min_price].to_i
+    max_price = params[:max_price].to_i
+
+    # 価格範囲に基づいて商品を検索
+    @clothings = Clothing.where(price: min_price..max_price)
+
+    # 商品の価格と画像URLだけを返す
+    # 画像URLはrails_blob_pathを使って生成
+    render json: @clothings.map { |clothing| {
+      id: clothing.id,
+      price: clothing.price,
+      image_url: clothing.image.attached? ? rails_blob_path(clothing.image, only_path: true) : nil
+    } }
+  end
+
   private
 
   def item_params
