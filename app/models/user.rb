@@ -5,4 +5,17 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :information, dependent: :destroy
+
+   # デフォルトのロールを設定（新しいユーザーには `user` がデフォルト）
+   after_initialize :set_default_role, if: :new_record?
+
+   # ロールの列挙
+   enum role: { user: 'user', admin: 'admin' }
+ 
+   private
+ 
+   # ロールのデフォルト値を設定
+   def set_default_role
+     self.role ||= :user
+   end
 end

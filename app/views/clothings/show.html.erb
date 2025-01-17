@@ -1,6 +1,6 @@
 商品詳細<br>
-<%= link_to '商品編集', edit_clothing_path%><br>
- <%= link_to "削除", clothing_path, data: {turbo_method: :delete} %>
+
+
        <%= image_tag @clothing.image %>
  <br>      <%= @clothing.item %>
  <br>    <%= @clothing.description %>
@@ -12,4 +12,11 @@
   <br>    <%= @clothing.size %>
  <br>     <%= @clothing.color %>
   <br>    <%= @clothing.material %>
-  <br><%= link_to "購入へ進む", new_clothing_purchase_path(@clothing)%>
+
+  
+<% if current_user.admin? %>
+  <%= link_to '商品編集', edit_clothing_path%><br>
+    <%= link_to '削除', clothing_path, data: {turbo_method: :delete}, class: 'delete-link' %>
+<% elsif current_user.user? %>
+ <br><%= link_to "購入へ進む", new_clothing_purchase_path(@clothing)%>
+ <% end %>
