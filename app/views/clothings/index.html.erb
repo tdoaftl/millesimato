@@ -4,6 +4,7 @@
   <div id="price-range-slider" style="margin: 20px auto;"></div>
 <p>価格範囲: ¥<span id="min-price-value">1000</span> 〜 ¥<span id="max-price-value">23000</span></p>
 
+
   <div id="product-count" style="margin: 10px 0;">
   <!-- 商品数がここに表示されます -->
 </div>
@@ -17,17 +18,18 @@
 
 
 
-
 <%# 管理者 %>
-<% if current_user.admin? %>
+ <% if current_user &&  current_user.admin? %>
 <%= link_to '商品登録', new_clothing_path %>
  <div id="clothing-list"> 
  <% @clothings.each do |clothing| %>
    <div class="clothing-item">
+      <%= link_to clothing_path(clothing.id) do %>
       <p>¥<%= clothing.price %></p>
          <% if clothing.image.attached? %>
      <%= image_tag clothing.image,  class: "item-img" %>
     </div>
+  <% end %>
   <% end %>
  </div> 
  <% end %> 

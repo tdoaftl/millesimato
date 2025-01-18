@@ -4,14 +4,16 @@
        <%= image_tag @clothing.image %>
  <br>      <%= @clothing.item %>
  <br>    <%= @clothing.description %>
-<br> <%= @clothing.price %>
- <br>     <%= @clothing.brand%>
- <br>    <%= @clothing.age %>
-<br>      <%= @clothing.category%>
- <br>     <%= @clothing.condition %>
-  <br>    <%= @clothing.size %>
- <br>     <%= @clothing.color %>
-  <br>    <%= @clothing.material %>
+<br> ¥<%= @clothing.price %>
+ <br>    ブランド <%= @clothing.brand.name%>
+ <br>   年代 <%= @clothing.era.name %>
+  <br>   カテゴリー<%= @clothing.gender.name %>
+<br>      <%= @clothing.category.name%>
+ <br>   コンディション  <%= @clothing.condition.name %>
+  <br> サイズ   <%= @clothing.size.name %>
+ <br>   カラー  <%= @clothing.color.name %>
+  <br>  素材  <%= @clothing.material.name %>
+   <br>  MADE IN <%= @clothing.made_in.name %>
 
   
 <% if current_user.admin? %>
