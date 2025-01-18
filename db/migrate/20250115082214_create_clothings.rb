@@ -6,13 +6,14 @@ class CreateClothings < ActiveRecord::Migration[7.0]
       t.integer     :price,            null: false
       t.integer     :brand_id,         null: false
       t.integer     :era_id,           null: false
-      t.integer     :gender_id,         null: false
+      t.integer     :gender_id,        null: false
       t.integer     :category_id,      null: false
       t.integer     :condition_id,     null: false
       t.integer     :size_id,          null: false
       t.integer     :color_id,         null: false
       t.integer     :material_id,      null: false
       t.integer     :made_in_id,       null: false
+      t.integer     :visibility,       null: false
       t.references  :user,             null: false, foreign_key: true
 
       t.timestamps

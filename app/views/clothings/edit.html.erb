@@ -87,13 +87,23 @@
 
 <fieldset>
 <legend>Made in</legend>
-  <% MadeIn.all.each do |made_in_id| %>
+  <% MadeIn.all.each do |made_in| %>
     <div>
-      <%= f.radio_button :made_in_id_id, made_in_id.id, id: "made_in_id_#{made_in_id.id}" %>
-      <%= f.label "made_in_id_#{made_in_id.id}", made_in_id.name %>
+      <%= f.radio_button :made_in_id, made_in.id, id: "made_in_#{made_in.id}" %>
+      <%= f.label "made_in_#{made_in.id}", made_in.name %>
     </div>
   <% end %>
 </fieldset>
+
+<div> 
+  <p>ステータスを選択してください:</p>
+  <%= f.radio_button :visibility, :visible, id: "visibility_visible" %>
+  <%= f.label :visibility, "表示", for: "visibility_visible" %>
+</div>
+<div>
+  <%= f.radio_button :visibility, :hidden, id: "visibility_hidden" %>
+  <%= f.label :visibility, "非表示", for: "visibility_hidden" %>
+</div>
 
   <br>    <%= f.submit "編集する" ,class:"register-red-btn" %> 
  <% end %> 

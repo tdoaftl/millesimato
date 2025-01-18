@@ -8,7 +8,7 @@
   <legend>ブランド</legend>
   <% Brand.all.each do |brand| %>
     <div>
-      <%= f.radio_button :brand_id, brand.id, id: "brand_#{brand.id}" %>
+      <%= f.radio_button :brand_id, brand.id, id: "brand_#{brand.id}" ,checked: brand.id == 1  %>
       <%= f.label "brand_#{brand.id}", brand.name %>
     </div>
   <% end %>
@@ -18,7 +18,7 @@
 <legend>年代</legend> <br>
   <% Era.all.each do |era| %>
     <div>
-      <%= f.radio_button :era_id, era.id, id: "era_#{era.id}" %>
+      <%= f.radio_button :era_id, era.id, id: "era_#{era.id}" ,checked: era.id == 1%>
       <%= f.label "era_#{era.id}", era.name %>
     </div>
   <% end %>
@@ -28,7 +28,7 @@
 <legend>性別</legend>
   <% Gender.all.each do |gender| %>
     <div>
-      <%= f.radio_button :gender_id, gender.id, id: "gender_#{gender.id}" %>
+      <%= f.radio_button :gender_id, gender.id, id: "gender_#{gender.id}" ,checked: gender.id == 1%>
       <%= f.label "gender_#{gender.id}", gender.name %>
     </div>
   <% end %>
@@ -38,7 +38,7 @@
 <legend>カテゴリー</legend>
   <% Category.all.each do |category| %>
     <div>
-      <%= f.radio_button :category_id, category.id, id: "category_#{category.id}" %>
+      <%= f.radio_button :category_id, category.id, id: "category_#{category.id}" ,checked: category.id == 1%>
       <%= f.label "category_#{category.id}", category.name %>
     </div>
   <% end %>
@@ -48,7 +48,7 @@
 <legend>コンディション</legend>
   <% Condition.all.each do |condition| %>
     <div>
-      <%= f.radio_button :condition_id, condition.id, id: "condition_#{condition.id}" %>
+      <%= f.radio_button :condition_id, condition.id, id: "condition_#{condition.id}" ,checked: condition.id == 1%>
       <%= f.label "condition_#{condition.id}", condition.name %>
     </div>
   <% end %>
@@ -58,7 +58,7 @@
 <legend>サイズ</legend>
   <% Size.all.each do |size| %>
     <div>
-      <%= f.radio_button :size_id, size.id, id: "size_#{size.id}" %>
+      <%= f.radio_button :size_id, size.id, id: "size_#{size.id}" ,checked: size.id == 1%>
       <%= f.label "size_#{size.id}", size.name %>
     </div>
   <% end %>
@@ -68,7 +68,7 @@
 <legend>色</legend>
   <% Color.all.each do |color| %>
     <div>
-      <%= f.radio_button :color_id, color.id, id: "color_#{color.id}" %>
+      <%= f.radio_button :color_id, color.id, id: "color_#{color.id}" ,checked: color.id == 1%>
       <%= f.label "color_#{color.id}", color.name %>
     </div>
   <% end %>
@@ -78,7 +78,7 @@
 <legend>素材</legend>
   <% Material.all.each do |material| %>
     <div>
-      <%= f.radio_button :material_id, material.id, id: "material_#{material.id}" %>
+      <%= f.radio_button :material_id, material.id, id: "material_#{material.id}" ,checked: material.id == 1%>
       <%= f.label "material_#{material.id}", material.name %>
     </div>
   <% end %>
@@ -86,13 +86,23 @@
 
 <fieldset>
 <legend>Made in</legend>
-  <% MadeIn.all.each do |made_in_id| %>
+  <% MadeIn.all.each do |made_in| %>
     <div>
-      <%= f.radio_button :made_in_id_id, made_in_id.id, id: "made_in_id_#{made_in_id.id}" %>
-      <%= f.label "made_in_id_#{made_in_id.id}", made_in_id.name %>
+      <%= f.radio_button :made_in_id, made_in.id, id: "made_in_#{made_in.id}" ,checked: made_in.id == 1%>
+      <%= f.label "made_in_#{made_in.id}", made_in.name %>
     </div>
   <% end %>
 </fieldset>
+
+<div> 
+  <p>ステータスを選択してください:</p>
+  <%= f.radio_button :visibility, :visible, id: "visibility_visible" , checked: @clothing.visibility.nil? %>
+  <%= f.label :visibility, "表示", for: "visibility_visible" %>
+</div>
+<div>
+  <%= f.radio_button :visibility, :hidden, id: "visibility_hidden" %>
+  <%= f.label :visibility, "非表示", for: "visibility_hidden" %>
+</div>
 
   <br>    <%= f.submit "商品登録" ,class:"register-red-btn" %> 
  <% end %> 

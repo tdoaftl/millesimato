@@ -1,6 +1,10 @@
 class Clothing < ApplicationRecord
   has_one_attached :image
 
+  # 商品ステータス    表示: 0, 非表示: 1
+  enum visibility: { visible: 0, hidden: 1 }  
+
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :brand
   belongs_to :era

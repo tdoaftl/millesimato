@@ -27,6 +27,7 @@ class ClothingsController < ApplicationController
 
   def update
     @clothing = Clothing.find(params[:id])
+
     if @clothing.update(item_params)
       redirect_to clothing_path
     else
@@ -61,7 +62,7 @@ class ClothingsController < ApplicationController
   def item_params
     params.require(:clothing).permit(
       :item, :description, :price, :image, :brand_id, :era_id, :category_id, :gender_id,
-      :condition_id, :size_id, :color_id, :material_id, :made_in_id
+      :condition_id, :size_id, :color_id, :material_id, :made_in_id, :visibility
     ).merge(user_id: current_user.id)
   end
 
