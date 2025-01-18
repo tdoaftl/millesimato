@@ -60,8 +60,8 @@ class ClothingsController < ApplicationController
 
   def item_params
     params.require(:clothing).permit(
-      :item, :description, :price, :brand, :age, :category,
-      :condition, :size, :color, :material, :image
+      :item, :description, :price, :image, :brand_id, :era_id, :category_id, :gender_id,
+      :condition_id, :size_id, :color_id, :material_id, :made_in_id
     ).merge(user_id: current_user.id)
   end
 

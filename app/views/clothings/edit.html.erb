@@ -1,15 +1,99 @@
 商品編集<br>
  <%= form_with model: @clothing, local: true do |f| %> 
-<%= f.file_field :image %>
-   <br>    <%= f.text_field :item,  placeholder:"アイテム" %>
- <br>    <%= f.text_field :description,  placeholder:"説明" %>
-<br> <%= f.text_field :price,  placeholder:"金額" %>
- <br>     <%= f.text_field :brand, placeholder:"ブランド" %>
- <br>    <%= f.text_field :age, placeholder:"年代" %>
-<br>      <%= f.text_field :category,  placeholder:"カテゴリー" %>
- <br>     <%= f.text_field :condition,  placeholder:"コンディション" %>
-  <br>    <%= f.text_field :size,  placeholder:"サイズ" %>
- <br>     <%= f.text_field :color,  placeholder:"サイズ" %>
-  <br>    <%= f.text_field :material,  placeholder:"素材" %>
+ <%= f.file_field :image %>
+  <br>     アイテム<%= f.text_field :item,  placeholder:"アイテム名" %>
+ <br>    説明<%= f.text_field :description,  placeholder:"説明" %>
+<br> 金額<%= f.text_field :price,  placeholder:"金額" %>
+<br>
+<fieldset>
+  <legend>ブランド</legend>
+  <% Brand.all.each do |brand| %>
+    <div>
+      <%= f.radio_button :brand_id, brand.id, id: "brand_#{brand.id}" %>
+      <%= f.label "brand_#{brand.id}", brand.name %>
+    </div>
+  <% end %>
+</fieldset>
+
+<fieldset>
+<legend>年代</legend> <br>
+  <% Era.all.each do |era| %>
+    <div>
+      <%= f.radio_button :era_id, era.id, id: "era_#{era.id}" %>
+      <%= f.label "era_#{era.id}", era.name %>
+    </div>
+  <% end %>
+</fieldset>
+
+<fieldset>
+<legend>性別</legend>
+  <% Gender.all.each do |gender| %>
+    <div>
+      <%= f.radio_button :gender_id, gender.id, id: "gender_#{gender.id}" %>
+      <%= f.label "gender_#{gender.id}", gender.name %>
+    </div>
+  <% end %>
+</fieldset>
+
+<fieldset>
+<legend>カテゴリー</legend>
+  <% Category.all.each do |category| %>
+    <div>
+      <%= f.radio_button :category_id, category.id, id: "category_#{category.id}" %>
+      <%= f.label "category_#{category.id}", category.name %>
+    </div>
+  <% end %>
+</fieldset>
+
+<fieldset>
+<legend>コンディション</legend>
+  <% Condition.all.each do |condition| %>
+    <div>
+      <%= f.radio_button :condition_id, condition.id, id: "condition_#{condition.id}" %>
+      <%= f.label "condition_#{condition.id}", condition.name %>
+    </div>
+  <% end %>
+</fieldset>
+
+<fieldset>
+<legend>サイズ</legend>
+  <% Size.all.each do |size| %>
+    <div>
+      <%= f.radio_button :size_id, size.id, id: "size_#{size.id}" %>
+      <%= f.label "size_#{size.id}", size.name %>
+    </div>
+  <% end %>
+</fieldset>
+
+<fieldset>
+<legend>色</legend>
+  <% Color.all.each do |color| %>
+    <div>
+      <%= f.radio_button :color_id, color.id, id: "color_#{color.id}" %>
+      <%= f.label "color_#{color.id}", color.name %>
+    </div>
+  <% end %>
+</fieldset>
+
+<fieldset>
+<legend>素材</legend>
+  <% Material.all.each do |material| %>
+    <div>
+      <%= f.radio_button :material_id, material.id, id: "material_#{material.id}" %>
+      <%= f.label "material_#{material.id}", material.name %>
+    </div>
+  <% end %>
+</fieldset>
+
+<fieldset>
+<legend>Made in</legend>
+  <% MadeIn.all.each do |made_in_id| %>
+    <div>
+      <%= f.radio_button :made_in_id_id, made_in_id.id, id: "made_in_id_#{made_in_id.id}" %>
+      <%= f.label "made_in_id_#{made_in_id.id}", made_in_id.name %>
+    </div>
+  <% end %>
+</fieldset>
+
   <br>    <%= f.submit "編集する" ,class:"register-red-btn" %> 
  <% end %> 

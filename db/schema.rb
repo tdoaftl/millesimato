@@ -43,13 +43,15 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_17_075107) do
     t.string "item", null: false
     t.string "description", null: false
     t.integer "price", null: false
-    t.string "brand", null: false
-    t.string "age", null: false
-    t.string "category", null: false
-    t.string "condition", null: false
-    t.string "size", null: false
-    t.string "color", null: false
-    t.string "material", null: false
+    t.integer "brand_id", null: false
+    t.integer "era_id", null: false
+    t.integer "gender_id", null: false
+    t.integer "category_id", null: false
+    t.integer "condition_id", null: false
+    t.integer "size_id", null: false
+    t.integer "color_id", null: false
+    t.integer "material_id", null: false
+    t.integer "made_in_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
