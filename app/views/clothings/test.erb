@@ -1,0 +1,63 @@
+<%# 管理者 %>
+ <% if current_user &&  current_user.admin? %>
+<%= link_to '商品登録', new_clothing_path %>
+ <div id="clothing-list"> 
+ <% @clothings.each do |clothing| %>
+   <div class="clothing-item">
+      <%= link_to clothing_path(clothing.id) do %>
+      <p>¥<%= clothing.price %></p>
+         <% if clothing.image.attached? %>
+     <%= image_tag clothing.image,  class: "item-img" %>
+    </div>
+  <% end %>
+  <% end %>
+ </div> 
+ <% end %> 
+ <% end %> 
+
+
+<p>カテゴリー:</p>
+ <% Category.where.not(id: 1).each do |category| %>
+    <%= check_box_tag "category_#{category.id}", category.id, false, class: "filter-checkbox", data: { filter: 'category' } %> <%= category.name %>
+  <% end %>
+
+
+<p>性別:</p>
+  <% Gender.where.not(id: 1).each do |gender| %>
+    <%= check_box_tag "gender_#{gender.id}", gender.id, false, class: "filter-checkbox", data: { filter: 'gender' } %> <%= gender.name %>
+  <% end %>
+
+<p>年代:</p>
+  <% Era.where.not(id: 1).each do |era| %>
+    <%= check_box_tag "era_#{era.id}", era.id, false, class: "filter-checkbox", data: { filter: 'era' } %> <%= era.name %>
+  <% end %>
+
+<div>
+  <p>色:</p>
+  <% Color.where.not(id: 1).each do |color| %>
+    <%= check_box_tag "color_#{color.id}", color.id, false, class: "filter-checkbox", data: { filter: 'color' } %> <%= color.name %>
+  <% end %>
+</div>
+
+<div>
+  <p>サイズ:</p>
+  <% Size.where.not(id: 1).each do |size| %>
+    <%= check_box_tag "size_#{size.id}", size.id, false, class: "filter-checkbox", data: { filter: 'size' } %> <%= size.name %>
+  <% end %>
+</div>
+
+<p>状態:</p>
+  <% Condition.where.not(id: 1).each do |condition| %>
+    <%= check_box_tag "condition_#{condition.id}", condition.id, false, class: "filter-checkbox", data: { filter: 'condition' } %> <%= condition.name %>
+  <% end %>
+
+  
+ <p>素材:</p>
+ <% Material.where.not(id: 1).each do |material| %>
+    <%= check_box_tag "material_#{material.id}", material.id, false, class: "filter-checkbox", data: { filter: 'material' } %> <%= material.name %>
+  <% end %>
+
+ <p>Made in:</p>
+ <% MadeIn.where.not(id: 1).each do |made_in| %>
+    <%= check_box_tag "made_in_#{made_in.id}", made_in.id, false, class: "filter-checkbox", data: { filter: 'made_in' } %> <%= made_in.name %>
+  <% end %>

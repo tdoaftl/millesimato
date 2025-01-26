@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   root to: "clothings#index"
   resources :clothings do
     collection do
-      get 'search'  # これで /clothings/search にアクセスできるようにする
+      post 'search_all'        # /clothings/search にアクセス可能
+      get 'brand_check'
     end
     resources :purchases, only: [:new, :create]
   end

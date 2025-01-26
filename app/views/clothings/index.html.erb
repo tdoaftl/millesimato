@@ -1,36 +1,55 @@
 <%= render "shared/header" %>
 <h1>トップページ</h1>
 
-  <div id="price-range-slider" style="margin: 20px auto;"></div>
-<p>価格範囲: ¥<span id="min-price-value">1000</span> 〜 ¥<span id="max-price-value">23000</span></p>
-
-
   <div id="product-count" style="margin: 10px 0;">
-  <!-- 商品数がここに表示されます -->
+  <!-- 検索数がここに表示されます -->
 </div>
+
+
+
+
+<div id="price-range-slider"></div>
+<p>価格範囲: <span id="min-price-value">0</span> 〜 <span id="max-price-value">50000</span></p>
+
+
+
+<div>
+  <label>
+    <input type="checkbox" id="free-word-checkbox"> チェックボックス（検索を有効にする）
+  </label>
+</div>
+<div>
+  <input type="text" id="free-word-search" placeholder="商品名や説明文を入力">
+</div>
+
+
+
+
+ 
   
 
- <div id="product-list">
-  <!-- 商品がここに表示されます -->
-
-  <!-- 他の商品の要素も続きます -->
+<div id="search-container">
+  <input type="text" id="brand-search-box" placeholder="ブランドを検索">
+  <ul id="brand-search-results" style="display: none; list-style: none; border: 1px solid #ccc; padding: 5px; max-height: 200px; overflow-y: auto;">
+    <!-- ブランド検索結果表示 -->
+  </ul>
 </div>
 
 
+<p>ブランド:</p>
+ <% Brand.where.not(id: 1).each do |brand| %>
+    <%= check_box_tag "brand_#{brand.id}", brand.id, false, class: "filter-checkbox", data: { filter: 'brand' } %> <%= brand.name %>
+  <% end %>
 
-<%# 管理者 %>
- <% if current_user &&  current_user.admin? %>
-<%= link_to '商品登録', new_clothing_path %>
- <div id="clothing-list"> 
- <% @clothings.each do |clothing| %>
-   <div class="clothing-item">
-      <%= link_to clothing_path(clothing.id) do %>
-      <p>¥<%= clothing.price %></p>
-         <% if clothing.image.attached? %>
-     <%= image_tag clothing.image,  class: "item-img" %>
-    </div>
+   <p>Made in:</p>
+ <% MadeIn.where.not(id: 1).each do |made_in| %>
+    <%= check_box_tag "made_in_#{made_in.id}", made_in.id, false, class: "filter-checkbox", data: { filter: 'made_in' } %> <%= made_in.name %>
   <% end %>
-  <% end %>
- </div> 
- <% end %> 
- <% end %> 
+
+
+
+
+<div id="product-list">
+  <!-- 商品リストがここに挿入されます -->
+</div>
+
