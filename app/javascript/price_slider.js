@@ -4,7 +4,7 @@ const sliderState = {
   max: 50000,
 };
 
-const slider = () => {
+const price_slider = () => {
   const priceSlider = document.getElementById('price-range-slider');
 
   if (!priceSlider) return; // スライダーが存在しない場合は終了
@@ -48,5 +48,5 @@ const slider = () => {
   });
 };
 
-document.addEventListener("turbo:load", slider);
-document.addEventListener("turbo:render", slider);
+document.addEventListener("turbo:load", price_slider);
+document.addEventListener("turbo:render", price_slider);

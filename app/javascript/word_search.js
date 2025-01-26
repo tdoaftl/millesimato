@@ -1,4 +1,4 @@
-const word = () => {
+const word_search = () => {
   const searchQueryInput = document.getElementById('free-word-search');
   const enableSearchCheckbox = document.getElementById('free-word-checkbox');
 
@@ -19,4 +19,4 @@ const word = () => {
       });
     };
 
-    window.addEventListener("turbo:load", word);
+    window.addEventListener("turbo:load", word_search);

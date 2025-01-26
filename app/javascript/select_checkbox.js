@@ -1,4 +1,4 @@
-const checkbox = () => {
+const select_checkbox = () => {
   const checkboxes = document.querySelectorAll('.filter-checkbox');
 
   checkboxes.forEach((checkbox) => {
@@ -15,4 +15,4 @@ const checkbox = () => {
   });
 };
 
-window.addEventListener("turbo:load", checkbox);
+window.addEventListener("turbo:load", select_checkbox);
