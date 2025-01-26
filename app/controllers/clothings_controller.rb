@@ -1,9 +1,8 @@
 class ClothingsController < ApplicationController
-  def index
-    if current_user&.admin?
-       @clothings = Clothing.all
+    def index
+     
     end
-  end
+  
 
   def new
     @clothing = Clothing.new
@@ -18,7 +17,7 @@ class ClothingsController < ApplicationController
   end
 
   def show
-    @clothing = Clothing.find(params[:id])
+     @clothing = Clothing.find(params[:id])
   end
 
   def edit
@@ -41,30 +40,100 @@ class ClothingsController < ApplicationController
     redirect_to root_path 
   end
 
-  def search
-    min_price = params[:min_price].to_i
-    max_price = params[:max_price].to_i
 
-    # 価格範囲に基づいて商品を検索
-    @clothings = Clothing.where(price: min_price..max_price)
+  #ブランド名を検索してプルダウンリストに表示
+  def brand_check
+    query = params[:query].downcase # ユーザーの入力を小文字に変換
 
-    # 商品の価格と画像URLだけを返す
-    # 画像URLはrails_blob_pathを使って生成
-    render json: @clothings.map { |clothing| {
-      id: clothing.id,
-      price: clothing.price,
-      image_url: clothing.image.attached? ? rails_blob_path(clothing.image, only_path: true) : nil
-    } }
-  end
+    # ActiveHash内のデータを小文字に変換して一致するものを検索
+    results = Brand.all.select do |brand|
+      brand.name.downcase.include?(query) # 商品名を小文字にして検索
+    end
+       render json: results.map { |brand| { id: brand.id, name: brand.name } }
+    end
 
-  private
+    def search_all
+      clothings = Clothing.all
+    
+      # フリーワード検索 (item または description)
+      if params[:searchWord].present?
+        query = params[:searchWord].strip.downcase
+        clothings = clothings.where('LOWER(item) LIKE :query OR LOWER(description) LIKE :query', query: "%#{query}%")
+      end
+  
+      # 金額範囲でフィルタ
+      if params[:priceRange].present?
+        min_price = params[:priceRange][:min].to_i
+        max_price = params[:priceRange][:max].to_i
+  
+        clothings = clothings.where(price: min_price..max_price)
+      end
+  
+      # チェックボックスフィルタ
+      if params[:checkboxFilters].present?
+        filters = params[:checkboxFilters]
+  
+        # ブランドフィルタ
+        if filters[:brand].present?
+          clothings = clothings.where(brand_id: filters[:brand].map(&:to_i))
+        end
+  
+  
+    
+      # 性別でフィルタ
+      if filters[:gender].present?
+        clothings = clothings.where(gender_id: filters[:gender].map(&:to_i))
+      end
+    
+      # 年代でフィルタ
+      if filters[:era].present?
+        clothings = clothings.where(era_id: filters[:era].map(&:to_i))
+      end
+    
+      # カテゴリーでフィルタ
+      if filters[:category].present?
+        clothings = clothings.where(category_id: filters[:category].map(&:to_i))
+      end
+    
+      # 素材でフィルタ
+      if filters[:material].present?
+        clothings = clothings.where(material_id: filters[:material].map(&:to_i))
+      end
+    
+      # 製造国でフィルタ
+      if filters[:made_in].present?
+        clothings = clothings.where(made_in_id: filters[:made_in].map(&:to_i))
+      end
+    
+      # 色でフィルタ
+      if filters[:color].present?
+        clothings = clothings.where(color_id: filters[:color].map(&:to_i))
+      end
+    
+      # サイズでフィルタ
+      if filters[:size].present?
+        clothings = clothings.where(size_id: filters[:size].map(&:to_i))
+      end
+    
+      # 状態でフィルタ
+      if filters[:condition].present?
+        clothings = clothings.where(condition_id: filters[:condition].map(&:to_i))
+      end
+    
+    end
+     # レスポンスが空でも空の配列を返す
+    render json: clothings.map { |clothing|
+      {
+        id: clothing.id,
+        price: clothing.price,
+        image_url: clothing.image.attached? ? rails_blob_path(clothing.image, only_path: true) : nil
+      }
+    }
+  
+    end
 
-  def item_params
-    params.require(:clothing).permit(
-      :item, :description, :price, :image, :brand_id, :era_id, :category_id, :gender_id,
-      :condition_id, :size_id, :color_id, :material_id, :made_in_id, :visibility
-    ).merge(user_id: current_user.id)
-  end
 
 
+  
+  
 end

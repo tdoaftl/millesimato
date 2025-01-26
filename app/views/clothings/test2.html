@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>noUiSlider 実装</title>
+  <!-- noUiSlider の CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/nouislider/dist/nouislider.min.css" rel="stylesheet">
+  <style>
+    #price-range-slider {
+      margin: 20px;
+    }
+    p {
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>価格スライダー</h1>
+  <div id="price-range-slider"></div>
+  <p>価格範囲: <span id="min-price-value">0</span> 〜 <span id="max-price-value">50000</span></p>
+
+  <!-- noUiSlider の JS -->
+  <script src="https://cdn.jsdelivr.net/npm/nouislider/dist/nouislider.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const priceSlider = document.getElementById('price-range-slider');
+
+      // スライダーを初期化
+      noUiSlider.create(priceSlider, {
+        start: [0, 50000], // 初期値
+        connect: true,     // 範囲を色付け
+        range: {
+          min: 0,
+          max: 50000,
+        },
+        step: 500,         // ステップ値
+      });
+
+      // スライダーの値が変更されるたびに表示を更新
+      const minPriceValue = document.getElementById('min-price-value');
+      const maxPriceValue = document.getElementById('max-price-value');
+
+      priceSlider.noUiSlider.on('update', (values) => {
+        minPriceValue.textContent = Math.round(values[0]);
+        maxPriceValue.textContent = Math.round(values[1]);
+      });
+    });
+  </script>
+</body>
+</html>
