@@ -1,10 +1,22 @@
 <header>
-<%  if user_signed_in? %>
-<%= link_to 'ログアウト', destroy_user_session_path, data: {turbo_method: :delete}, class: "logout" %>
-<%= link_to 'マイページ', users_path %>
-<%  else %>
+<div class="container top-header">
+  <div class="d-flex  justify-content-end">
+    <% if user_signed_in? %>
+       <button type="button" class="btn btn-primary">
+        <%= link_to 'マイページ', users_path %>
+      </button>
+      <button type="button" class="btn btn-primary bg-warning">
+        <%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete }, class: "logout" %>
+      </button>
+    <% else %>
+      <button type="button" class="btn btn-primary">
+        <%= link_to '新規登録', new_user_registration_path, class: "sign-up" %>
+      </button>
+      <button type="button" class="btn btn-primary">
+        <%= link_to 'ログイン', new_user_session_path, class: "login" %>
+      </button>
 
-<%= link_to 'ログイン', new_user_session_path, class: "login" %>
-<%= link_to '新規登録', new_user_registration_path, class: "sign-up" %>
-<%  end %>
+    <% end %>
+  </div>
+</div>
 </header>

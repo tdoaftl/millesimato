@@ -1,6 +1,9 @@
-<h2>Log in</h2>
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'devise' %>  <!-- Devise専用のスタイルを読み込む -->
+<% end %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<h2>Log in</h2>
+<%= form_with model: @user, url: user_session_path, class: 'login-form', local: true do |f| %>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

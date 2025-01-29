@@ -132,7 +132,14 @@ class ClothingsController < ApplicationController
   
     end
 
+private
 
+def item_params
+  params.require(:clothing).permit(
+    :item, :description, :price, :brand_id, :era_id, :gender_id, :category_id,
+    :condition_id, :size_id, :color_id, :material_id, :made_in_id, :image
+  ).merge(user_id: current_user.id)
+end
 
   
   

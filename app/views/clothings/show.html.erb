@@ -1,24 +1,29 @@
-商品詳細<br>
+<div class="clothing-detail">
+  <div class="clothing-image">
+    <%= image_tag @clothing.image %>
+  </div>
 
+  <div class="clothing-info">
+    <h2><%= @clothing.item %></h2>
+    <p><%= @clothing.description %></p>
+    <p>¥<%= @clothing.price %></p>
+    <p>ブランド: <%= @clothing.brand.name %></p>
+    <p>年代: <%= @clothing.era.name %></p>
+    <p>カテゴリー: <%= @clothing.gender.name %></p>
+    <p>カテゴリ名: <%= @clothing.category.name %></p>
+    <p>コンディション: <%= @clothing.condition.name %></p>
+    <p>サイズ: <%= @clothing.size.name %></p>
+    <p>カラー: <%= @clothing.color.name %></p>
+    <p>素材: <%= @clothing.material.name %></p>
+    <p>MADE IN: <%= @clothing.made_in.name %></p>
 
-       <%= image_tag @clothing.image %>
- <br>      <%= @clothing.item %>
- <br>    <%= @clothing.description %>
-<br> ¥<%= @clothing.price %>
- <br>    ブランド <%= @clothing.brand.name%>
- <br>   年代 <%= @clothing.era.name %>
-  <br>   カテゴリー<%= @clothing.gender.name %>
-<br>      <%= @clothing.category.name%>
- <br>   コンディション  <%= @clothing.condition.name %>
-  <br> サイズ   <%= @clothing.size.name %>
- <br>   カラー  <%= @clothing.color.name %>
-  <br>  素材  <%= @clothing.material.name %>
-   <br>  MADE IN <%= @clothing.made_in.name %>
-
-  
-<% if current_user.admin? %>
-  <%= link_to '商品編集', edit_clothing_path%><br>
-    <%= link_to '削除', clothing_path, data: {turbo_method: :delete}, class: 'delete-link' %>
-<% elsif current_user.user? %>
- <br><%= link_to "購入へ進む", new_clothing_purchase_path(@clothing)%>
- <% end %>
+    <% if user_signed_in? %>
+      <% if current_user.admin? %>
+        <%= link_to '商品編集', edit_clothing_path %><br>
+        <%= link_to '削除', clothing_path, data: {turbo_method: :delete}, class: 'delete-link' %>
+      <% elsif current_user.user? %>
+        <br><%= link_to "購入へ進む", new_clothing_purchase_path(@clothing) %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
