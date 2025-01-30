@@ -111,17 +111,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // 商品リストを描画
-        data.forEach((item, index) => {
+        data.forEach((product, index) => {
           // 商品ごとのHTML要素を作成
           const productElement = document.createElement('div');
-          productElement.classList.add('product-animation'); // アニメーション用クラスを追加
+          productElement.classList.add('product-item'); // アニメーション用クラスを追加
 
           // 商品リンクを作成
           const productLink = document.createElement('a');
-          productLink.href = `/clothings/${item.id}`;
+          productLink.href = `/clothings/${product.id}`;
           productLink.innerHTML = `
-            <p>¥${item.price}</p> <!-- 価格 -->
-            <img src="${item.image_url}" alt="Product Image"> <!-- 商品画像 -->
+            <img src="${product.image_url}" alt="Product Image"> <!-- 商品画像 -->
+            <p>¥${product.price}</p> <!-- 価格 -->
           `;
 
           productElement.appendChild(productLink); // 商品リンクを商品要素に追加

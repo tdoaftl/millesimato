@@ -1,95 +1,307 @@
 <%= render "shared/header" %>
-<h1>トップページ</h1>
+<%# ---------------------------------カルーセル %>
+<main>
+<div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel" data-bs-theme="light">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
+    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class="" aria-current="true"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">   
+      <div class="container d-flex justify-content-center">
+           <%= image_tag "unnamed.png" , class: "d-block", alt: "Slide 1" %>   
+      </div>
+    </div>
+    <div class="carousel-item">
 
-  <div id="product-count" style="margin: 10px 0;">
-  <!-- 検索数がここに表示されます -->
+      <div class="container">
+       <%= image_tag "test_image.png" , class: "d-block", alt: "Slide 1" %> 
+      </div>
+    </div>
+    <div class="carousel-item">
+
+      <div class="container">
+
+        <div class="carousel-caption text-end">
+          <h1>FREE SHIPPING!</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<%# ___________________________カルーセル %>
+
+
+<%# --------------------------フリーワードフォーム %>
+
+
+<div class="container py-4">
+  <form class="row g-3 justify-content-center align-items-center custom-form">
+    <div class="col-auto">
+      <label for="free-word-search" class="visually-hidden">Free word search</label>
+      <input type="text" class="form-control" id="free-word-search" placeholder="Free word search" style="width: 300px;">
+    </div>
+    <div class="col-auto">
+      <input type="checkbox" id="free-word-checkbox"> Search
+    </div>
+  </form>
+</div>
+<%# _________________________フリーワードフォーム %>
+<%= link_to '商品登録', new_clothing_path%>
+<%# -----------------------------ブランドリスト %>
+    
+<div class="container py-4" style="margin-bottom: 70px;">
+<div class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom" style="margin-left: 200px; width: 380px;">
+
+  <span class="fs-5 fw-semibold">Brand Search</span>
+  <div id="search-container" style="margin-left: 20px;">
+    <form class="row g-3 justify-content-center align-items-center custom-form">
+  <div class="col-auto">
+      <label for="brand-search-box" class="visually-hidden">Brand search</label>
+      <input type="text" class="form-control" id="brand-search-box" placeholder="Brand search" style="width: 180px;">
+    </div>
+  </form>
+  <ul id="brand-search-results" style="display: none; list-style: none; border: 1px solid #ccc; padding: 5px; max-height: 200px; overflow-y: auto;">
+    <!-- ブランド検索結果表示 -->
+  </ul>
+</div>
+
+</div>
+<ul class="list-unstyled ps-0" style="margin-left: 200px;">
+  <li class="mb-1">
+    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#brand-collapse" aria-expanded="false">
+      Brand
+    </button>
+    <div class="collapse brand-collapse position-absolute bg-white p-3 " id="brand-collapse">
+  <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small d-flex flex-wrap">
+    <% Brand.where.not(id: 1).each do |brand| %>
+      <li class="mx-0" style="flex: 0 0 16%;">
+        <div>
+          <%= check_box_tag "brand_#{brand.id}", brand.id, false, class: "filter-checkbox", data: { filter: 'brand' } %> <%= brand.name %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
+  </li>
+</ul>
+</ul>
+ </div>
+
+<%# _______________________________ブランドリスト %>
+
+
+<div class="container py-2" style="margin: 0 auto;">
+  <div class="row">
+    <!-- 左側のコンテナ (2割) -->
+    <div class="col-2">
+      <div class="p-3 border bg-light">
+        <div class="d-flex align-items-center pb-3 mb-3 border-bottom">
+          <span class="fs-5 fw-semibold">Item Search</span>
+        </div>
+        
+        <ul class="list-unstyled ps-0">
+          <li class="mb-1">
+            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+              data-bs-toggle="collapse" data-bs-target="#category-collapse" aria-expanded="false">
+              Category
+            </button>
+            <div class="collapse" id="category-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <% Category.where.not(id: 1).each do |category| %>
+                  <li>
+                    <div>
+                      <%= check_box_tag "category_#{category.id}", category.id, false,
+                          class: "filter-checkbox", data: { filter: 'category' } %> <%= category.name %>
+                    </div>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </li>
+        </ul>
+
+         <ul class="list-unstyled ps-0">
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#gender-collapse" aria-expanded="false">
+          Gender
+        </button>
+        <div class="collapse" id="gender-collapse" style="">
+           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+               <% Gender.where.not(id: 1).each do |gender| %>
+        <li><!-- チェックボックスをここに追加 -->
+           <div><%= check_box_tag "gender_#{gender.id}", gender.id, false, class: "filter-checkbox", data: { filter: 'gender' } %> <%= gender.name %> </div>
+        </li>
+            <% end %>
+        </ul>
+      </div>
+      </li>
+     </ul>
+
+ <ul class="list-unstyled ps-0">
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#era-collapse" aria-expanded="false">
+          Era
+        </button>
+        <div class="collapse" id="era-collapse" style="">
+           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+               <% Era.where.not(id: 1).each do |era| %>
+        <li><!-- チェックボックスをここに追加 -->
+           <div><%= check_box_tag "era_#{era.id}", era.id, false, class: "filter-checkbox", data: { filter: 'era' } %> <%= era.name %> </div>
+        </li>
+            <% end %>
+        </ul>
+      </div>
+      </li>
+     </ul>
+
+
+         <ul class="list-unstyled ps-0">
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#color-collapse" aria-expanded="false">
+          Color
+        </button>
+        <div class="collapse" id="color-collapse" style="">
+           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+               <% Color.where.not(id: 1).each do |color| %>
+        <li><!-- チェックボックスをここに追加 -->
+           <div><%= check_box_tag "color_#{color.id}", color.id, false, class: "filter-checkbox", data: { filter: 'color' } %> <%= color.name %> </div>
+        </li>
+            <% end %>
+        </ul>
+      </div>
+      </li>
+</ul>
+
+<ul class="list-unstyled ps-0">
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#size-collapse" aria-expanded="false">
+          Size
+        </button>
+        <div class="collapse" id="size-collapse" style="">
+           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+               <% Size.where.not(id: 1).each do |size| %>
+        <li><!-- チェックボックスをここに追加 -->
+           <div><%= check_box_tag "size_#{size.id}", size.id, false, class: "filter-checkbox", data: { filter: 'size' } %> <%= size.name %> </div>
+        </li>
+            <% end %>
+        </ul>
+      </div>
+      </li>
+</ul>
+
+<ul class="list-unstyled ps-0">
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#condition-collapse" aria-expanded="false">
+          Condition
+        </button>
+        <div class="collapse" id="condition-collapse" style="">
+           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+               <% Condition.where.not(id: 1).each do |condition| %>
+        <li><!-- チェックボックスをここに追加 -->
+           <div><%= check_box_tag "condition_#{condition.id}", condition.id, false, class: "filter-checkbox", data: { filter: 'condition' } %> <%= condition.name %> </div>
+        </li>
+            <% end %>
+        </ul>
+      </div>
+      </li>
+</ul>
+
+<ul class="list-unstyled ps-0">
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="false">
+          Material
+        </button>
+        <div class="collapse" id="home-collapse" style="">
+           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+               <% Material.where.not(id: 1).each do |material| %>
+        <li><!-- チェックボックスをここに追加 -->
+           <div><%= check_box_tag "material_#{material.id}", material.id, false, class: "filter-checkbox", data: { filter: 'material' } %> <%= material.name %> </div>
+        </li>
+            <% end %>
+        </ul>
+      </div>
+      </li>
+</ul>
+
+<ul class="list-unstyled ps-0">
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#made_in-collapse" aria-expanded="false">
+          MadeIn
+        </button>
+        <div class="collapse" id="made_in-collapse" style="">
+           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+               <% MadeIn.where.not(id: 1).each do |made_in| %>
+        <li><!-- チェックボックスをここに追加 -->
+           <div><%= check_box_tag "made_in_#{made_in.id}", made_in.id, false, class: "filter-checkbox", data: { filter: 'made_in' } %> <%= made_in.name %> </div>
+        </li>
+            <% end %>
+        </ul>
+      </div>
+      </li>
+</ul>
+ <ul class="list-unstyled ps-0">
+          <!-- Price -->
+          <li class="mb-1">
+            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" 
+              data-bs-toggle="collapse" data-bs-target="#price-collapse" aria-expanded="false">
+              Price
+            </button>
+            <div class="collapse" id="price-collapse">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li>
+                  <div id="price-range-slider"></div>
+                </li>
+                <p>￥ <span id="min-price-value">0</span> 〜 <span id="max-price-value">50000</span></p>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 右側のコンテナ (8割) -->
+    <div class="col-10">
+      <div class="p-3 border bg-light">
+        <div id="product-list">
+          <!-- 商品リストがここに挿入されます -->
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 
 
 
-<div id="price-range-slider"></div>
-<p>価格範囲: <span id="min-price-value">0</span> 〜 <span id="max-price-value">50000</span></p>
+<%# ___________________________________サイドバー %>
 
 
 
-<div>
-  <label>
-    <input type="checkbox" id="free-word-checkbox"> チェックボックス（検索を有効にする）
-  </label>
-</div>
-<div>
-  <input type="text" id="free-word-search" placeholder="商品名や説明文を入力">
-</div>
 
+</main>
+
+<%= render "shared/footer" %>
 
 
 
  
   
 
-<div id="search-container">
-  <input type="text" id="brand-search-box" placeholder="ブランドを検索">
-  <ul id="brand-search-results" style="display: none; list-style: none; border: 1px solid #ccc; padding: 5px; max-height: 200px; overflow-y: auto;">
-    <!-- ブランド検索結果表示 -->
-  </ul>
-</div>
-
-
-<p>ブランド:</p>
- <% Brand.where.not(id: 1).each do |brand| %>
-    <%= check_box_tag "brand_#{brand.id}", brand.id, false, class: "filter-checkbox", data: { filter: 'brand' } %> <%= brand.name %>
-  <% end %>
-<p>カテゴリー:</p>
- <% Category.where.not(id: 1).each do |category| %>
-    <%= check_box_tag "category_#{category.id}", category.id, false, class: "filter-checkbox", data: { filter: 'category' } %> <%= category.name %>
-  <% end %>
-
-
-<p>性別:</p>
-  <% Gender.where.not(id: 1).each do |gender| %>
-    <%= check_box_tag "gender_#{gender.id}", gender.id, false, class: "filter-checkbox", data: { filter: 'gender' } %> <%= gender.name %>
-  <% end %>
-
-<p>年代:</p>
-  <% Era.where.not(id: 1).each do |era| %>
-    <%= check_box_tag "era_#{era.id}", era.id, false, class: "filter-checkbox", data: { filter: 'era' } %> <%= era.name %>
-  <% end %>
-
-<div>
-  <p>色:</p>
-  <% Color.where.not(id: 1).each do |color| %>
-    <%= check_box_tag "color_#{color.id}", color.id, false, class: "filter-checkbox", data: { filter: 'color' } %> <%= color.name %>
-  <% end %>
-</div>
-
-<div>
-  <p>サイズ:</p>
-  <% Size.where.not(id: 1).each do |size| %>
-    <%= check_box_tag "size_#{size.id}", size.id, false, class: "filter-checkbox", data: { filter: 'size' } %> <%= size.name %>
-  <% end %>
-</div>
-
-<p>状態:</p>
-  <% Condition.where.not(id: 1).each do |condition| %>
-    <%= check_box_tag "condition_#{condition.id}", condition.id, false, class: "filter-checkbox", data: { filter: 'condition' } %> <%= condition.name %>
-  <% end %>
-
-  
- <p>素材:</p>
- <% Material.where.not(id: 1).each do |material| %>
-    <%= check_box_tag "material_#{material.id}", material.id, false, class: "filter-checkbox", data: { filter: 'material' } %> <%= material.name %>
-  <% end %>
-  
-   <p>Made in:</p>
- <% MadeIn.where.not(id: 1).each do |made_in| %>
-    <%= check_box_tag "made_in_#{made_in.id}", made_in.id, false, class: "filter-checkbox", data: { filter: 'made_in' } %> <%= made_in.name %>
-  <% end %>
 
 
 
 
-<div id="product-list">
-  <!-- 商品リストがここに挿入されます -->
-</div>
+
+
+
 

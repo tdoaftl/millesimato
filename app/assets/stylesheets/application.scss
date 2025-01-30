@@ -1,0 +1,264 @@
+
+ /* リセット */
+ body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+//ヘッダー透過-----------------------------------------
+/* ヘッダーのスタイル */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.8); /* 半透明の背景 */
+  backdrop-filter: blur(3px); /* ぼかし効果 */
+  //border-bottom: 1px solid rgba(200, 200, 200, 0.5); /* 境界線 */
+  z-index: 1000; /* 他の要素より上に表示 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* 軽い影 */
+}
+
+/* コンテンツ全体のスタイル */
+main {
+  margin-top: 60px; /* ヘッダーの高さ分の余白 */
+  //padding: 10px;
+}
+
+/* ダミーコンテンツ */
+.content {
+  height: 2000px; /* スクロールを発生させるための高さ */
+  background: linear-gradient(to bottom, #f9f9f9, #e0e0e0); /* グラデーション背景 */
+}
+
+
+.top-header .d-flex{
+  height: 60px; /* 高さを60pxに設定 */
+}
+
+.top-header .d-flex {
+  height: 100%; /* 親要素の高さを引き継ぐ */
+  align-items: center; /* 垂直方向の中央揃え */
+}
+
+.top-header .btn {
+  line-height: 1.2; /* ボタン内のテキストの高さ調整 */
+}
+
+.top-header .btn a {
+  text-decoration: none; /* リンクの下線を削除 */
+  color: white; /* リンクの文字色を調整 */
+}
+
+//-----------------------------------------------
+
+
+
+
+
+.dropdown-toggle:not(:focus) {
+  outline: 0;
+}
+
+
+
+#myCarousel {
+  height: 512px;
+  margin-bottom: 50px;
+
+}
+
+.carousel-item {
+  background-color: white; /* 背景を白に設定 */
+  height: 512px;
+}
+
+#myCarousel .carousel-caption {
+  color: black; /* キャプションの文字を黒に設定 */
+}
+
+#myCarousel .carousel-indicators button {
+  background-color: black; /* インジケーターのボタンを黒に設定 */
+
+}
+
+#myCarousel .carousel-control-prev-icon,
+#myCarousel .carousel-control-next-icon {
+  filter: invert(100%); /* 矢印アイコンを黒から白に反転 */
+}
+
+//----フリーワード検索フォーム----------------------------------
+
+/* フォーカス時のフォーム周りの線 */
+.custom-form input.form-control:focus {
+  outline: none; /* デフォルトの青い枠線を消す */
+  box-shadow: 0 0 0 3px #f5e5c4; /* 影を線に変更 */
+  border-color: #f5e5c4; /* ボーダーの色を青に変更 */
+}
+
+
+#brand-collapse {
+  z-index: 1000; /* 他の要素より手前に表示 */
+  
+}
+
+
+//_______ブランドリスト___________________________________________
+
+
+#brand-search-results {
+  position: absolute;
+  z-index: 1001;
+  width: 200px; /* 必要に応じて調整 */
+  border: 1px solid #ccc;
+  background-color: #fff;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 150px; /* 必要に応じて調整 */
+  overflow-y: auto; /* スクロール可能にする */
+}
+
+#brand-search-results li {
+  padding: 8px;
+  cursor: pointer;
+}
+
+#brand-search-results li:hover {
+  background-color: #f0f0f0;
+}
+
+//--------------------------------------------
+
+
+#product-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);  /* 5列のグリッド */
+  gap: 8px;  /* 商品間の間隔 */
+}
+
+.product-item {
+  width: 100%;  /* グリッドに収まるように幅を自動調整 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.product-item img {
+  width: 100%;  /* 画像の幅を親要素に合わせる */
+  height: auto; /* 高さを自動調整して比率維持 */
+  object-fit: contain;
+  background-color: white;
+}
+
+.product-item p {
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* 商品の画像アニメーション */
+.product-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.product-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.product-item a {
+  text-decoration: none; /* 下線をなくす */
+  color: black; /* 文字色を黒にする */
+}
+
+.product-item a:hover {
+  color: black; /* ホバー時も黒のままにする */
+}
+
+
+
+
+
+//-------------------------------------------------------------
+/* ユーザー登録フォーム */
+.registration-form {
+  width: 60%;  /* 幅を6割に設定 */
+  margin: 0 auto;  /* 中央配置 */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.field {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"], input[type="number"], select, input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  border: none;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.actions {
+  text-align: center;
+}
+
+/* ボタンのスタイル */
+.register-red-btn {
+  background-color: #e74c3c;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+.register-red-btn:hover {
+  background-color: #c0392b;
+}
+
+.select-box {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+

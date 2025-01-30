@@ -1,0 +1,53 @@
+/* devise.scss */
+
+/* 共通のスタイル */
+.registration-main, .login-form {
+  width: 60%;  /* 幅を6割に設定 */
+  margin: 0 auto;  /* 中央配置 */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.field {
+  margin-bottom: 15px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="email"], input[type="password"], input[type="checkbox"], input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.actions {
+  text-align: center;
+}
+
+.check-box {
+  display: inline-block;
+  margin-right: 10px;
+}
