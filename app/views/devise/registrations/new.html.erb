@@ -10,18 +10,10 @@
    <%= f.text_field :nickname,  id:"nickname", maxlength:"40" %>
  </div>
 
-<div class="field">
-<%= f.label :birthday %><br />
-  <%= raw sprintf(
-          f.date_select(
-            :birthday,
-            use_month_numbers: true,
-            prompt:'--',
-            start_year: 1930,
-            end_year: (Time.now.year - 5),
-            date_separator: '%s'),
-          " 年 ", " 月 ") + " 日 " %>
- </div>
+  <div class="field">
+    <%= f.label :birthday %><br />
+    <%= f.date_select :birthday, use_month_numbers: true, prompt: { year: '年', month: '月', day: '日' }, start_year: 1930, end_year: (Time.current.year - 5) %>
+  </div>
  
   <div class="field">
     <%= f.label :email %><br />
