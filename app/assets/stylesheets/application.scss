@@ -57,13 +57,7 @@ main {
 
 //-----------------------------------------------
 
-.form-control-dark {
-  border-color: var(--bs-gray);
-}
-.form-control-dark:focus {
-  border-color: #fff;
-  box-shadow: 0 0 0 .25rem rgba(255, 255, 255, .25);
-}
+
 
 
 
@@ -103,8 +97,8 @@ main {
 /* フォーカス時のフォーム周りの線 */
 .custom-form input.form-control:focus {
   outline: none; /* デフォルトの青い枠線を消す */
-  box-shadow: 0 0 0 3px #dbd8f8; /* 影を線に変更 */
-  border-color: #dbd8f8; /* ボーダーの色を青に変更 */
+  box-shadow: 0 0 0 3px #f5e5c4; /* 影を線に変更 */
+  border-color: #f5e5c4; /* ボーダーの色を青に変更 */
 }
 
 
