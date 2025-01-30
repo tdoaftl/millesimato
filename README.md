@@ -44,6 +44,8 @@ https://millesimato.onrender.com/
 といった課題を解決するために、簡単に検索を行えて希望の商品を発見できるWebアプリを開発を行うことにした。
 
 # 実装した機能についての画像やGIFおよびその説明  
+![demo](https://furima202501.s3.ap-northeast-1.amazonaws.com/ezgif-2507cfb3cc0cf.gif)  
+複数の検索項目から商品を絞ることができる。  
 
 # 実装予定の機能  
 * カート機能の実装
