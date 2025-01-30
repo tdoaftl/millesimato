@@ -7,16 +7,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:nickname])
   end
 
-  # deviseのパラメータにbirthdayを結合する処理
-  def update_resource(resource, params)
-    if params[:birthday].is_a?(Array) && params[:birthday].length == 3
-      # 年月日から日付を作成してbirthdayに設定
-      params[:birthday] = Date.new(*params[:birthday].map(&:to_i))
-    end
-    super(resource, params)
-  end
-
-
+# basic認証
 private
 def basic_auth
   authenticate_or_request_with_http_basic do |username, password|
