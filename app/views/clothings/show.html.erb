@@ -1,6 +1,10 @@
 <div class="clothing-detail">
   <div class="clothing-image">
+    <% if @clothing.image.attached? %>
     <%= image_tag @clothing.image %>
+    <% else %>
+  <%= image_tag "dummy.png" %>
+<% end %>
   </div>
 
   <div class="clothing-info">

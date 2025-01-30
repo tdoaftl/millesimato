@@ -68,15 +68,26 @@ main {
 
 
 #myCarousel {
-  height: 512px;
-  margin-bottom: 50px;
-
+  height: 550px; /* カルーセル全体の高さを固定 */
 }
 
-.carousel-item {
-  background-color: white; /* 背景を白に設定 */
-  height: 512px;
+#myCarousel .carousel-inner {
+  height: 100%;
 }
+
+#myCarousel .carousel-item {
+  height: 100%; /* 各スライドを親要素にフィット */
+}
+
+#myCarousel .carousel-item img {
+  height: 550px; /* 画像の高さをカルーセルにフィット */
+  width: 100%; /* 横幅いっぱいに広げる */
+  object-fit: cover; /* 画像の縦横比を維持しつつフィットさせ、中央基点でトリミング */
+  object-position: center; /* 画像の中央を基点にトリミング */
+  display: block;
+}
+
+
 
 #myCarousel .carousel-caption {
   color: black; /* キャプションの文字を黒に設定 */

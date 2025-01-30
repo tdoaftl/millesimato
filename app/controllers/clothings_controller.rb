@@ -44,13 +44,14 @@ class ClothingsController < ApplicationController
   #ブランド名を検索してプルダウンリストに表示
   def brand_check
     query = params[:query].downcase # ユーザーの入力を小文字に変換
-
-    # ActiveHash内のデータを小文字に変換して一致するものを検索
+  
+    # ActiveHash内のデータを小文字に変換し、前方一致するものを検索
     results = Brand.all.select do |brand|
-      brand.name.downcase.include?(query) # 商品名を小文字にして検索
+      brand.name.downcase.start_with?(query) # 入力文字列で始まるブランドのみ取得
     end
-       render json: results.map { |brand| { id: brand.id, name: brand.name } }
-    end
+  
+    render json: results.map { |brand| { id: brand.id, name: brand.name } }
+  end
 
     def search_all
       clothings = Clothing.all

@@ -1,7 +1,7 @@
 // 現在のスライダー値を保持するオブジェクト
 const sliderState = {
   min: 0,
-  max: 50000,
+  max: 100000,
 };
 
 const price_slider = () => {
@@ -20,7 +20,7 @@ const price_slider = () => {
     connect: true,     // 範囲を色付け
     range: {
       min: 0,
-      max: 50000,
+      max: 100000,
     },
     step: 500,         // ステップ値
   });

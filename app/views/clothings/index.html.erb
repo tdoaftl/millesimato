@@ -7,24 +7,25 @@
     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2" class=""></button>
     <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3" class="" aria-current="true"></button>
   </div>
-  <div class="carousel-inner">
+  <div class="carousel-inner" >
     <div class="carousel-item active">   
       <div class="container d-flex justify-content-center">
-           <%= image_tag "unnamed.png" , class: "d-block", alt: "Slide 1" %>   
+           <%= image_tag "top_image.png" , class: "d-block", alt: "Slide 1" %>   
       </div>
     </div>
     <div class="carousel-item">
 
       <div class="container">
-       <%= image_tag "test_image.png" , class: "d-block", alt: "Slide 1" %> 
+       <%= image_tag "top_image2.jpg" , class: "d-block", alt: "Slide 2" %> 
       </div>
     </div>
     <div class="carousel-item">
 
       <div class="container">
-
+<%= image_tag "top_image3.jpg" , class: "d-block", alt: "Slide 3" %> 
         <div class="carousel-caption text-end">
-          <h1>FREE SHIPPING!</h1>
+          
+          <div style="font-weight: bold; font-size: 48px;">FREE SHIPPING!</div>
         </div>
       </div>
     </div>
@@ -102,9 +103,9 @@
 
 <div class="container py-2" style="margin: 0 auto;">
   <div class="row">
-    <!-- 左側のコンテナ (2割) -->
+    <!-- 左側のコンテナ  -->
     <div class="col-2">
-      <div class="p-3 border bg-light">
+      <div class="p-3  bg-light">
         <div class="d-flex align-items-center pb-3 mb-3 border-bottom">
           <span class="fs-5 fw-semibold">Item Search</span>
         </div>
@@ -130,22 +131,22 @@
           </li>
         </ul>
 
-         <ul class="list-unstyled ps-0">
+<ul class="list-unstyled ps-0">
       <li class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#gender-collapse" aria-expanded="false">
-          Gender
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#size-collapse" aria-expanded="false">
+          Size
         </button>
-        <div class="collapse" id="gender-collapse" style="">
+        <div class="collapse" id="size-collapse" style="">
            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-               <% Gender.where.not(id: 1).each do |gender| %>
+               <% Size.where.not(id: 1).each do |size| %>
         <li><!-- チェックボックスをここに追加 -->
-           <div><%= check_box_tag "gender_#{gender.id}", gender.id, false, class: "filter-checkbox", data: { filter: 'gender' } %> <%= gender.name %> </div>
+           <div><%= check_box_tag "size_#{size.id}", size.id, false, class: "filter-checkbox", data: { filter: 'size' } %> <%= size.name %> </div>
         </li>
             <% end %>
         </ul>
       </div>
       </li>
-     </ul>
+</ul>
 
  <ul class="list-unstyled ps-0">
       <li class="mb-1">
@@ -164,6 +165,22 @@
       </li>
      </ul>
 
+         <ul class="list-unstyled ps-0">
+      <li class="mb-1">
+        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#gender-collapse" aria-expanded="false">
+          Gender
+        </button>
+        <div class="collapse" id="gender-collapse" style="">
+           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+               <% Gender.where.not(id: 1).each do |gender| %>
+        <li><!-- チェックボックスをここに追加 -->
+           <div><%= check_box_tag "gender_#{gender.id}", gender.id, false, class: "filter-checkbox", data: { filter: 'gender' } %> <%= gender.name %> </div>
+        </li>
+            <% end %>
+        </ul>
+      </div>
+      </li>
+     </ul>
 
          <ul class="list-unstyled ps-0">
       <li class="mb-1">
@@ -182,22 +199,7 @@
       </li>
 </ul>
 
-<ul class="list-unstyled ps-0">
-      <li class="mb-1">
-        <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#size-collapse" aria-expanded="false">
-          Size
-        </button>
-        <div class="collapse" id="size-collapse" style="">
-           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-               <% Size.where.not(id: 1).each do |size| %>
-        <li><!-- チェックボックスをここに追加 -->
-           <div><%= check_box_tag "size_#{size.id}", size.id, false, class: "filter-checkbox", data: { filter: 'size' } %> <%= size.name %> </div>
-        </li>
-            <% end %>
-        </ul>
-      </div>
-      </li>
-</ul>
+
 
 <ul class="list-unstyled ps-0">
       <li class="mb-1">
@@ -269,9 +271,9 @@
       </div>
     </div>
 
-    <!-- 右側のコンテナ (8割) -->
+    <!-- 右側のコンテナ  -->
     <div class="col-10">
-      <div class="p-3 border bg-light">
+      <div class="p-3  bg-light">
         <div id="product-list">
           <!-- 商品リストがここに挿入されます -->
         </div>

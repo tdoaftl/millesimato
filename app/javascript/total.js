@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 初期フィルタ設定
   const filters = {
     searchWord: '', // 検索ワード
-    priceRange: { min: 0, max: 50000 }, // 価格範囲の初期値
+    priceRange: { min: 0, max: 100000 }, // 価格範囲の初期値
     checkboxFilters: {}, // チェックボックスフィルタ（カテゴリーやブランドなど）
   };
 
@@ -120,8 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
           const productLink = document.createElement('a');
           productLink.href = `/clothings/${product.id}`;
           productLink.innerHTML = `
-            <img src="${product.image_url}" alt="Product Image"> <!-- 商品画像 -->
-            <p>¥${product.price}</p> <!-- 価格 -->
+            <img src="${product.image_url || '/images/dummy.png'}" alt="dummy.png"> <!-- 商品画像 -->
+            <p style="font-weight: bold;">¥${product.price}</p> <!-- 価格 -->
           `;
 
           productElement.appendChild(productLink); // 商品リンクを商品要素に追加
