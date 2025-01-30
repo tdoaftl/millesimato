@@ -51,7 +51,7 @@ https://millesimato.onrender.com/
 
 # データベース設計  
 
-<video src="https://gyazo.com/5bccb98f1d13296a94f053d0c883de51" controls="true width="600""></video>
+<video src="https://gyazo.com/5bccb98f1d13296a94f053d0c883de51" controls="true" width="600"></video>
 # 画面遷移図  
 <img src="https://furima202501.s3.ap-northeast-1.amazonaws.com/screen+transition+diagram.png">  
 
