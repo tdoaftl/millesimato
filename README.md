@@ -52,8 +52,8 @@ https://millesimato.onrender.com/
 * お気に入り機能の実装
 
 # データベース設計  
-https://gyazo.com/5bccb98f1d13296a94f053d0c883de51
-<video src="https://gyazo.com/5bccb98f1d13296a94f053d0c883de51" controls="true" width="600"></video>
+<img src="https://furima202501.s3.ap-northeast-1.amazonaws.com/entity-relationship+diagram.png">  
+
 # 画面遷移図  
 <img src="https://furima202501.s3.ap-northeast-1.amazonaws.com/screen+transition+diagram.png">  
 
