@@ -273,3 +273,70 @@ input[type="submit"]:hover {
 }
 
 
+//商品詳細
+.clothing-detail {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 30px;
+  padding: 50px 15%;
+}
+
+.clothing-image {
+  flex: 1;
+  text-align: center;
+}
+
+.clothing-img {
+  max-width: 480px;
+  max-height: 640px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.clothing-info {
+  flex: 1;
+  max-width: 400px; /* 🔽 横幅を少し狭めて中央に寄せる */
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.clothing-info h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #333;
+  text-align: center; /* 🔽 タイトルを中央揃え */
+}
+
+.clothing-info p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+  text-align: center; /* 🔽 各情報も中央揃え */
+}
+
+.clothing-info p:last-child {
+  border-bottom: none;
+}
+
+.clothing-info .btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.btn-warning, .btn-danger, .btn-primary {
+ // width: 100%;
+}

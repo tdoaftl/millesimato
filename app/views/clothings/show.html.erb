@@ -1,12 +1,16 @@
-<div class="clothing-detail">
+<%= render "shared/header" %>
+<main>
+<div class="clothing-detail d-flex justify-content-center align-items-center">
+  <!-- 画像エリア -->
   <div class="clothing-image">
     <% if @clothing.image.attached? %>
-    <%= image_tag @clothing.image %>
+      <%= image_tag @clothing.image, class: "clothing-img" %>
     <% else %>
-  <%= image_tag "dummy.png" %>
-<% end %>
+      <%= image_tag "dummy.png", class: "clothing-img" %>
+    <% end %>
   </div>
 
+  <!-- 情報エリア -->
   <div class="clothing-info">
     <h2><%= @clothing.item %></h2>
     <p><%= @clothing.description %></p>
@@ -23,11 +27,12 @@
 
     <% if user_signed_in? %>
       <% if current_user.admin? %>
-        <%= link_to '商品編集', edit_clothing_path %><br>
-        <%= link_to '削除', clothing_path, data: {turbo_method: :delete}, class: 'delete-link' %>
+        <%= link_to '商品編集', edit_clothing_path, class: "btn btn-warning" %><br>
+        <%= link_to '削除', clothing_path, data: {turbo_method: :delete}, class: 'btn btn-danger mt-2' %>
       <% elsif current_user.user? %>
-        <br><%= link_to "購入へ進む", new_clothing_purchase_path(@clothing) %>
+        <br><%= link_to "購入へ進む", new_clothing_purchase_path(@clothing), class: "btn btn-primary mt-2" %>
       <% end %>
     <% end %>
   </div>
 </div>
+</main>
