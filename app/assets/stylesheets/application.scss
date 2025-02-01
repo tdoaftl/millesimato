@@ -273,7 +273,7 @@ input[type="submit"]:hover {
 }
 
 
-//商品詳細
+//------------------商品詳細
 .clothing-detail {
   display: flex;
   justify-content: center;
@@ -295,6 +295,14 @@ input[type="submit"]:hover {
   object-fit: contain;
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.clothing-img-thumbnail {
+  max-width: 240px;
+  max-height: 320px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
 }
 
 .clothing-info {
@@ -337,6 +345,4 @@ input[type="submit"]:hover {
   border-radius: 5px;
 }
 
-.btn-warning, .btn-danger, .btn-primary {
- // width: 100%;
-}
+
