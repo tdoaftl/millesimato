@@ -4,10 +4,11 @@ document.addEventListener("turbo:load", () => {
     return;
   }
   
-  // Bootstrap Collapse を再初期化
-  document.querySelectorAll(".collapse").forEach((element) => {
-    new window.bootstrap.Collapse(element, {
-      toggle: false, // 初期状態では展開しない
-    });
+  // ページロード時とページ遷移時にすべてのCollapseを閉じる
+  const collapses = document.querySelectorAll('.collapse');
+  collapses.forEach(collapse => {
+    collapse.classList.remove('show');
   });
 });
+
+

@@ -2,6 +2,7 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 import "card"
+import "app"
 import "price_slider"
 import "select_checkbox"
 import "word_search"

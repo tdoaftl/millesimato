@@ -1,5 +1,6 @@
 # アプリケーション名  
 Millesimato  
+イタリア語でヴィンテージという意味
 
 # アプリケーション概要  
 ヴィンテージの洋服を購入できるアプリで、複数の検索条件を組み合わせて希望のアイテムを探し出せる。
@@ -40,8 +41,7 @@ https://millesimato.onrender.com/
 2.商品画面から商品の編集、削除が行える。  
 
 # アプリケーションを作成した背景  
-近年、ヴィンテージ服の人気が高まっており、特に若い世代からの需要が増えている。詳しくなくても気軽に購入したい  
-といった課題を解決するために、簡単に検索を行えて希望の商品を発見できるWebアプリを開発を行うことにした。
+近年、ヴィンテージ服の人気が高まっており、特に若い世代からの需要が増えている。詳しくなくても気軽に購入したい、といった課題を解決するために、簡単に検索を行えて希望の商品を発見できるWebアプリを開発を行うことにした。  
 
 # 実装した機能についての画像やGIFおよびその説明  
 ![demo](https://furima202501.s3.ap-northeast-1.amazonaws.com/ezgif-2507cfb3cc0cf.gif)  
@@ -58,6 +58,7 @@ https://millesimato.onrender.com/
 <img src="https://furima202501.s3.ap-northeast-1.amazonaws.com/screen+transition+diagram.png">  
 
 # 開発環境  
-* ruby  
-* javascript  
-* Bootstrap
+* フロントエンド：HTML・CSS・JavaScript
+* バックエンド：Ruby
+* フレームワーク：Ruby on Rails・Bootstrap
+* ライブラリ：devise・Active Storage
