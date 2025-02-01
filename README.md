@@ -52,7 +52,7 @@ https://millesimato.onrender.com/
 * お気に入り機能の実装
 
 # データベース設計  
-<img src="https://furima202501.s3.ap-northeast-1.amazonaws.com/entity-relationship+diagram1.png">  
+<img src="https://furima202501.s3.ap-northeast-1.amazonaws.com/entity-relationship+diagram_.png">  
 
 # 画面遷移図  
 <img src="https://furima202501.s3.ap-northeast-1.amazonaws.com/screen+transition+diagram.png">  
