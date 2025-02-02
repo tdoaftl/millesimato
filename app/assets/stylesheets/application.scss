@@ -112,6 +112,13 @@ main {
   border-color: #f5e5c4; /* ボーダーの色を青に変更 */
 }
 
+#number-form:focus {
+  outline: none; /* デフォルトの青い枠線を消す */
+  box-shadow: 0 0 0 3px #f5e5c4; /* 影を線に変更 */
+  border-color: #f5e5c4; /* ボーダーの色を変更 */
+}
+
+
 
 #brand-collapse {
   z-index: 1000; /* 他の要素より手前に表示 */

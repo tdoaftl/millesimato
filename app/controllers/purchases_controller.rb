@@ -1,4 +1,10 @@
 class PurchasesController < ApplicationController
+  def index
+ 
+
+  end
+  
+  
   def new
     gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
 
@@ -26,7 +32,7 @@ class PurchasesController < ApplicationController
     if @purchase_delivery.valid?
       pay_item
       @purchase_delivery.save
-      redirect_to root_path
+      redirect_to clothing_purchases_path
     else
       gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
       render :new
@@ -43,7 +49,7 @@ class PurchasesController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  # 自身のPAY.JPテスト秘密鍵を記述しましょう
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  # PAY.JPテスト秘密鍵
     Payjp::Charge.create(
       amount: @clothing.price,  # 商品の値段
       card: purchase_delivery_params[:token],    # カードトークン

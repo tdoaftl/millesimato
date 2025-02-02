@@ -62,3 +62,4 @@ https://millesimato.onrender.com/
 * バックエンド：Ruby
 * フレームワーク：Ruby on Rails・Bootstrap
 * ライブラリ：devise・Active Storage
+* テキストエディタ：Visual Studio Code

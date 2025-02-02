@@ -6,7 +6,7 @@ Rails.application.routes.draw do
       post 'search_all'        # /clothings/search にアクセス可能
       get 'brand_check'
     end
-    resources :purchases, only: [:new, :create]
+    resources :purchases, only: [:new, :create, :index]
   end
 
 
