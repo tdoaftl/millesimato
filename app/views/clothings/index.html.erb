@@ -1,18 +1,20 @@
- <% if current_user&.admin? %>
-      <!-- 管理者メニュー -->
+ <!-- 管理者メニュー表示 -->
+ <% if current_user&.admin? %>   
+      <h2>商品一覧</h2>
+      <%= link_to '商品登録', new_clothing_path%>
 <% @clothings.each do |clothing| %>
     <%= link_to clothing_path(clothing.id) do %>
  
-    <% if @clothing.image.attached? %>
-      <%= image_tag @clothing.image, class: "clothing-img" %>
+    <% if clothing.image.attached? %>
+      <%= image_tag clothing.image, class: "clothing-img-admin" %>
     <% else %>
-      <%= image_tag "dummy.png", class: "clothing-img" %>
+      <%= image_tag "dummy.png", class: "clothing-img-admin" %>
     <% end %>
 <% end%>
 <% end%>
 <% else %>
 
-
+<!-- ユーザー側表示 -->
 <%= render "shared/header" %>
 <%# ---------------------------------カルーセル %>
 <main>

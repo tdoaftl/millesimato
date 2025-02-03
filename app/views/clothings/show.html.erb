@@ -28,7 +28,9 @@
     <% if user_signed_in? %>
       <% if current_user.admin? %>
         <%= link_to '商品編集', edit_clothing_path, class: "btn btn-warning" %><br>
+        <% unless Purchase.exists?(clothing_id: @clothing.id) %>
         <%= link_to '削除', clothing_path, data: {turbo_method: :delete}, class: 'btn btn-danger mt-2' %>
+        <% end %>
       <% elsif current_user.user? %>
         <br><%= link_to "購入へ進む", new_clothing_purchase_path(@clothing), class: "btn btn-primary mt-2" %>
       <% end %>

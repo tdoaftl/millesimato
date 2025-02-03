@@ -353,3 +353,10 @@ input[type="submit"]:hover {
 }
 
 
+.clothing-img-admin {
+  max-width: 150px;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
