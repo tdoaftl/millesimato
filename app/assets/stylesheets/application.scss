@@ -360,3 +360,82 @@ input[type="submit"]:hover {
   height: auto;
   object-fit: contain;
 }
+
+
+
+
+/* 商品登録フォーム全体 */
+.clothing-form-container {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+.clothing-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.clothing-form input[type="text"],
+.clothing-form input[type="file"] {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.clothing-form fieldset {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.clothing-form legend {
+  font-weight: bold;
+}
+
+.clothing-register-btn {
+  width: 100%;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.clothing-register-btn:hover {
+  background: #c0392b;
+}
+
+.clothing-form p {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.clothing-form input[type="radio"] {
+  margin-right: 5px;
+}
+
+
+/* ラジオボタンのリスト */
+.clothing-form .radio-group {
+  display: flex;
+  flex-wrap: wrap;  /* 5つごとに折り返す */
+  gap: 10px;
+}
+
+/* 各ラジオボタンのラッパー */
+.clothing-form .radio-group div {
+  width: calc(20% - 10px); /* 5つ並ぶように調整 */
+  min-width: 100px;  /* 最小幅を設定 */
+  display: flex;
+  align-items: center;
+}
