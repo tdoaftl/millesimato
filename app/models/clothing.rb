@@ -1,6 +1,10 @@
 class Clothing < ApplicationRecord
   has_one_attached :image
+  has_many :purchase
 
+  def sold?
+    purchase.present?  # Purchaseテーブルに紐づくレコードがあるかどうか
+  end
   # 商品ステータス    表示: 0, 非表示: 1
   enum visibility: { visible: 0, hidden: 1 }  
 

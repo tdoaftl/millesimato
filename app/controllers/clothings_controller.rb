@@ -127,7 +127,8 @@ class ClothingsController < ApplicationController
       {
         id: clothing.id,
         price: clothing.price,
-        image_url: clothing.image.attached? ? rails_blob_path(clothing.image, only_path: true) : nil
+        image_url: clothing.image.attached? ? rails_blob_path(clothing.image, only_path: true) : nil,
+        sold: clothing.sold?
       }
     }
   

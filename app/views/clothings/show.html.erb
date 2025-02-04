@@ -1,7 +1,10 @@
 <%= render "shared/header" %>
 <main>
 <div class="clothing-detail d-flex justify-content-center align-items-center">
-  <!-- 画像エリア -->
+  <!-- 画像エリア --><div class="clothing-image-wrapper"> 
+      <% if @clothing.sold? %>
+        <div class="sold-label">SOLD</div>  <!-- 売り切れラベル -->
+      <% end %>
   <div class="clothing-image">
     <% if @clothing.image.attached? %>
       <%= image_tag @clothing.image, class: "clothing-img" %>
@@ -9,6 +12,7 @@
       <%= image_tag "dummy.png", class: "clothing-img" %>
     <% end %>
   </div>
+    </div>
 
   <!-- 情報エリア -->
   <div class="clothing-info">
@@ -25,14 +29,15 @@
     <p>素材: <%= @clothing.material.name %></p>
     <p>MADE IN: <%= @clothing.made_in.name %></p>
 
+
+ <% unless Purchase.exists?(clothing_id: @clothing.id) %>
     <% if user_signed_in? %>
       <% if current_user.admin? %>
         <%= link_to '商品編集', edit_clothing_path, class: "btn btn-warning" %><br>
-        <% unless Purchase.exists?(clothing_id: @clothing.id) %>
-        <%= link_to '削除', clothing_path, data: {turbo_method: :delete}, class: 'btn btn-danger mt-2' %>
-        <% end %>
+        <%= link_to '削除', clothing_path, data: {turbo_method: :delete}, class: 'btn btn-danger mt-2' %>   
       <% elsif current_user.user? %>
         <br><%= link_to "購入へ進む", new_clothing_purchase_path(@clothing), class: "btn btn-primary mt-2" %>
+        <% end %>
       <% end %>
     <% end %>
   </div>

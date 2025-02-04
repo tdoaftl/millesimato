@@ -115,18 +115,33 @@ document.addEventListener('DOMContentLoaded', () => {
           // 商品ごとのHTML要素を作成
           const productElement = document.createElement('div');
           productElement.classList.add('product-item'); // アニメーション用クラスを追加
-
+        
           // 商品リンクを作成
           const productLink = document.createElement('a');
           productLink.href = `/clothings/${product.id}`;
+        
+          // 画像と価格を商品リンクに追加
           productLink.innerHTML = `
-            <img src="${product.image_url || '/images/dummy.png'}" alt="dummy.png"> <!-- 商品画像 -->
-            <p style="font-weight: bold;">¥${product.price}</p> <!-- 価格 -->
+            <div class="clothing-image-wrapper">
+              <img src="${product.image_url || '/images/dummy.png'}" alt="dummy.png"> <!-- 商品画像 -->
+              <p style="font-weight: bold;">¥${product.price}</p> <!-- 価格 -->
+            </div>
           `;
-
+        
+          // 商品が売り切れの場合に SOLD ラベルを追加
+          if (product.sold) {  // product.soldがtrueならSOLDラベルを表示
+            const soldLabel = document.createElement('div');
+            soldLabel.classList.add('sold-label'); // CSSクラスを追加
+            soldLabel.innerText = 'SOLD';  // ラベルのテキストを設定
+        
+            // 商品画像をラッパーで囲んで SOLD ラベルを画像の上に追加
+            const imageWrapper = productLink.querySelector('.clothing-image-wrapper');
+            imageWrapper.appendChild(soldLabel); // SOLDラベルを画像の上に追加
+          }
+        
           productElement.appendChild(productLink); // 商品リンクを商品要素に追加
           productList.appendChild(productElement); // 商品要素を商品リストに追加
-
+        
           // 遅延を加えてアニメーションを開始（インデックスに基づいて時間差をつける）
           requestAnimationFrame(() => {
             setTimeout(() => {
@@ -134,6 +149,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }, index * 180); // 商品ごとに時間差をつけて表示
           });
         });
+        
+        
       })
       .catch((error) => console.error('Error fetching products:', error)); 
   }
