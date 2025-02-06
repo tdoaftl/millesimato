@@ -1,6 +1,7 @@
 class Clothing < ApplicationRecord
   has_one_attached :image
   has_many :purchase
+  belongs_to :user
 
   def sold?
     purchase.present?  # Purchaseテーブルに紐づくレコードがあるかどうか

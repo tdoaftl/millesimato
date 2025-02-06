@@ -4,7 +4,15 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :clothings
+  has_many :purchase      
   has_one :information, dependent: :destroy
+
+
+
+  validates :nickname,          presence: true
+  validates :birthday,          presence: true
+
 
    # デフォルトのロールを設定（新しいユーザーには `user` がデフォルト）
    after_initialize :set_default_role, if: :new_record?
