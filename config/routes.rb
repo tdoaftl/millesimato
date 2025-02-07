@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   resources :clothings do
     collection do
       post 'search_all'        # /clothings/search にアクセス可能
-      get 'brand_check'
+      get 'brand_check'   
+    end
+    member do
+      patch :update_visibility
     end
     resources :purchases, only: [:new, :create, :index]
   end

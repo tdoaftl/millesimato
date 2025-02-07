@@ -134,6 +134,23 @@ class ClothingsController < ApplicationController
   
     end
 
+
+
+
+
+    def update_visibility
+      @product = Product.find(params[:id])
+      if @product.update(visible: params[:product][:visible])
+        respond_to do |format|
+          format.html { redirect_to @product, notice: "表示設定を更新しました。" }
+          format.js # JavaScriptで非同期処理を行う場合
+        end
+      else
+        redirect_to @product, alert: "更新に失敗しました。"
+      end
+    end
+
+    
 private
 
 def item_params
