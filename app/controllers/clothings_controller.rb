@@ -1,7 +1,8 @@
 class ClothingsController < ApplicationController
-    def index
-      @clothings = Clothing.all
-    end
+  
+  def index
+    
+  end
   
 
   def new
@@ -54,7 +55,12 @@ class ClothingsController < ApplicationController
   end
 
     def search_all
-      clothings = Clothing.all
+      
+      if current_user&.admin?  # ユーザーが管理者の場合
+        clothings = Clothing.all
+      else
+        clothings = Clothing.where(visibility: :visible)  # 一般ユーザーまたは未ログインユーザーは visible の商品を表示
+      end
     
       # フリーワード検索 (item または description)
       if params[:searchWord].present?
@@ -128,7 +134,9 @@ class ClothingsController < ApplicationController
         id: clothing.id,
         price: clothing.price,
         image_url: clothing.image.attached? ? rails_blob_path(clothing.image, only_path: true) : nil,
-        sold: clothing.sold?
+        sold: clothing.sold?,
+        invisible: clothing.invisible?
+
       }
     }
   
@@ -138,19 +146,16 @@ class ClothingsController < ApplicationController
 
 
 
-    def update_visibility
-      @product = Product.find(params[:id])
-      if @product.update(visible: params[:product][:visible])
-        respond_to do |format|
-          format.html { redirect_to @product, notice: "表示設定を更新しました。" }
-          format.js # JavaScriptで非同期処理を行う場合
-        end
+    def toggle_visibility
+      @clothing = Clothing.find(params[:id]) 
+      if @clothing.update(visibility: params[:visibility])
+        render json: { visibility: @clothing.visibility }
       else
-        redirect_to @product, alert: "更新に失敗しました。"
+        render json: { error: "更新に失敗しました" }, status: :unprocessable_entity
       end
     end
 
-    
+
 private
 
 def item_params
@@ -159,6 +164,7 @@ def item_params
     :condition_id, :size_id, :color_id, :material_id, :made_in_id, :image, :visibility
   ).merge(user_id: current_user.id)
 end
+
 
   
   

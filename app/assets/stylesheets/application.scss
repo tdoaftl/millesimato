@@ -440,7 +440,7 @@ input[type="submit"]:hover {
   align-items: center;
 }
 
-//------------------------------------
+//---------------------soldラベル---------------
 /* 売り切れラベルのスタイル */
 .sold-label {
   position: absolute;
@@ -452,15 +452,44 @@ input[type="submit"]:hover {
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 14px;
+  z-index: 2; /* ラベルを画像の上に表示 */
 }
 
 /* 画像の親コンテナを relative にする */
 .clothing-image-wrapper {
   position: relative;
-  display: inline-block;
 }
 
-// トグルボタン
+/* 非表示ラベル */
+.hidden-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: black;
+  color: white;
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 5px;
+  font-weight: bold;
+  z-index: 2; /* ラベルを画像の上に表示 */
+}
+
+/* 画像のみ薄くする */
+.clothing-image-wrapper img.hidden-image {
+  opacity: 0.5; /* 画像を50%に薄くする */
+  transition: opacity 0.3s ease; /* スムーズに変更されるようにトランジションを設定 */
+}
+
+
+
+/* 画像の上にラベルが重ならないように */
+.clothing-image-wrapper img {
+  position: relative;
+  z-index: 1; /* 画像の下にラベルが来るように設定 */
+}
+
+
+// -----------------トグルボタン-----------------------
 .switch {
   position: relative;
   display: inline-block;
@@ -505,3 +534,7 @@ input:checked + .slider {
 input:checked + .slider:before {
   transform: translateX(26px);
 }
+
+
+//-------------非表示ラベル------------------------
+

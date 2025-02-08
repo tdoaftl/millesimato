@@ -3,11 +3,19 @@ class Clothing < ApplicationRecord
   has_many :purchase
   belongs_to :user
 
+   # 商品ステータス    表示: 0, 非表示: 1
+   enum visibility: { visible: 0, hidden: 1 }  
+
   def sold?
     purchase.present?  # Purchaseテーブルに紐づくレコードがあるかどうか
   end
-  # 商品ステータス    表示: 0, 非表示: 1
-  enum visibility: { visible: 0, hidden: 1 }  
+
+
+  def invisible?   #非表示かどうか
+    hidden?
+  end
+
+ 
 
 
   extend ActiveHash::Associations::ActiveRecordExtensions

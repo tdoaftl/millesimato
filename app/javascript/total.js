@@ -139,6 +139,25 @@ document.addEventListener('DOMContentLoaded', () => {
             imageWrapper.appendChild(soldLabel); // SOLDラベルを画像の上に追加
           }
         
+
+          // 商品が非表示の場合 非表示 ラベルを追加
+if (product.invisible) {  // product.invisibleがtrueなら非表示ラベルを表示
+  const invisibleLabel = document.createElement('div');
+  invisibleLabel.classList.add('hidden-badge'); // CSSクラスを追加
+  invisibleLabel.innerText = 'invisible';  // ラベルのテキストを設定
+
+  // 商品画像をラッパーで囲んで 非表示 ラベルを画像の上に追加
+  const imageWrapper = productLink.querySelector('.clothing-image-wrapper');
+  imageWrapper.appendChild(invisibleLabel); // 非表示ラベルを画像の上に追加
+
+  // 画像を透明にする
+  const image = imageWrapper.querySelector('img');  // 商品画像を取得
+  if (image) {
+    image.classList.add('hidden-image'); // 画像に透明度を適用するクラスを追加
+  }
+
+}
+        
           productElement.appendChild(productLink); // 商品リンクを商品要素に追加
           productList.appendChild(productElement); // 商品要素を商品リストに追加
         

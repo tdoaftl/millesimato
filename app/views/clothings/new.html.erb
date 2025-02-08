@@ -12,7 +12,7 @@
   <div class="radio-group">
     <% Brand.all.each do |brand| %>
       <div>
-        <%= f.radio_button :brand_id, brand.id, id: "brand_#{brand.id}" %>
+        <%= f.radio_button :brand_id, brand.id, id: "brand_#{brand.id}" , checked: (@clothing.brand_id.nil? && brand.id == 1) || @clothing.brand_id == brand.id %>
         <%= f.label "brand_#{brand.id}", brand.name %>
       </div>
     <% end %>
@@ -24,7 +24,7 @@
   <div class="radio-group">
     <% Era.all.each do |era| %>
       <div>
-        <%= f.radio_button :era_id, era.id, id: "era_#{era.id}" %>
+        <%= f.radio_button :era_id, era.id, id: "era_#{era.id}" , checked: (@clothing.era_id.nil? && era.id == 1) || @clothing.era_id == era.id %>
         <%= f.label "era_#{era.id}", era.name %>
       </div>
     <% end %>
@@ -36,7 +36,7 @@
   <div class="radio-group">
     <% Gender.all.each do |gender| %>
       <div>
-        <%= f.radio_button :gender_id, gender.id, id: "gender_#{gender.id}" %>
+        <%= f.radio_button :gender_id, gender.id, id: "gender_#{gender.id}" , checked: (@clothing.gender_id.nil? && gender.id == 1) || @clothing.gender_id == gender.id %>
         <%= f.label "gender_#{gender.id}", gender.name %>
       </div>
     <% end %>
@@ -48,7 +48,7 @@
   <div class="radio-group">
     <% Category.all.each do |category| %>
       <div>
-        <%= f.radio_button :category_id, category.id, id: "category_#{category.id}" %>
+        <%= f.radio_button :category_id, category.id, id: "category_#{category.id}" , checked: (@clothing.category_id.nil? && category.id == 1) || @clothing.category_id == category.id %>
         <%= f.label "category_#{category.id}", category.name %>
       </div>
     <% end %>
@@ -60,7 +60,7 @@
   <div class="radio-group">
     <% Condition.all.each do |condition| %>
       <div>
-        <%= f.radio_button :condition_id, condition.id, id: "condition_#{condition.id}" %>
+        <%= f.radio_button :condition_id, condition.id, id: "condition_#{condition.id}" , checked: (@clothing.condition_id.nil? && condition.id == 1) || @clothing.condition_id == condition.id %>
         <%= f.label "condition_#{condition.id}", condition.name %>
       </div>
     <% end %>
@@ -72,7 +72,7 @@
   <div class="radio-group">
     <% Size.all.each do |size| %>
       <div>
-        <%= f.radio_button :size_id, size.id, id: "size_#{size.id}" %>
+        <%= f.radio_button :size_id, size.id, id: "size_#{size.id}" , checked: (@clothing.size_id.nil? && size.id == 1) || @clothing.size_id == size.id %>
         <%= f.label "size_#{size.id}", size.name %>
       </div>
     <% end %>
@@ -84,7 +84,7 @@
   <div class="radio-group">
     <% Color.all.each do |color| %>
       <div>
-        <%= f.radio_button :color_id, color.id, id: "color_#{color.id}" %>
+        <%= f.radio_button :color_id, color.id, id: "color_#{color.id}" , checked: (@clothing.color_id.nil? && color.id == 1) || @clothing.color_id == color.id %>
         <%= f.label "color_#{color.id}", color.name %>
       </div>
     <% end %>
@@ -96,7 +96,7 @@
   <div class="radio-group">
     <% Material.all.each do |material| %>
       <div>
-        <%= f.radio_button :material_id, material.id, id: "material_#{material.id}" %>
+        <%= f.radio_button :material_id, material.id, id: "material_#{material.id}", checked: (@clothing.material_id.nil? && material.id == 1) || @clothing.material_id == material.id %>
         <%= f.label "material_#{material.id}", material.name %>
       </div>
     <% end %>
@@ -108,7 +108,7 @@
   <div class="radio-group">
     <% MadeIn.all.each do |made_in| %>
       <div>
-        <%= f.radio_button :made_in_id, made_in.id, id: "made_in_#{made_in.id}" %>
+        <%= f.radio_button :made_in_id, made_in.id, id: "made_in_#{made_in.id}" , checked: (@clothing.made_in_id.nil? && made_in.id == 1) || @clothing.made_in_id == made_in.id %>
         <%= f.label "made_in_#{made_in.id}", made_in.name %>
       </div>
     <% end %>

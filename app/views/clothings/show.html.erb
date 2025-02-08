@@ -1,15 +1,20 @@
 <%= render "shared/header" %>
 <main>
 <div class="clothing-detail d-flex justify-content-center align-items-center">
-  <!-- 画像エリア --><div class="clothing-image-wrapper"> 
+  <!-- 画像エリア -->
+  <div class="clothing-image-wrapper">
       <% if @clothing.sold? %>
         <div class="sold-label">SOLD</div>  <!-- 売り切れラベル -->
       <% end %>
+
+      <% if @clothing.invisible? %>
+        <div class="hidden-badge">invisible</div>  <!-- 非表示ラベル -->
+      <% end %>
   <div class="clothing-image">
     <% if @clothing.image.attached? %>
-      <%= image_tag @clothing.image, class: "clothing-img" %>
+      <%= image_tag @clothing.image, class: "clothing-img #{'hidden-image' if @clothing.invisible?}" %>
     <% else %>
-      <%= image_tag "dummy.png", class: "clothing-img" %>
+      <%= image_tag "dummy.png", class: "clothing-img #{'hidden-image' if @clothing.invisible?}" %>
     <% end %>
   </div>
     </div>
@@ -29,18 +34,14 @@
     <p>素材: <%= @clothing.material.name %></p>
     <p>MADE IN: <%= @clothing.made_in.name %></p>
 
-<%= form_with model: @clothing, local: true, html: { class: "clothing-form" } do |f| %> 
-  <div class="form-group">
-    <p>ステータスを選択してください:</p>
-    <label class="switch">
-      <%= f.check_box :visibility, { id: "visibility_toggle", class: "toggle-checkbox" }, "visible", "hidden" %>
-      <span class="slider round"></span>
-    </label>
-    <span id="toggle-label"><%= @clothing.visible? ? "表示" : "非表示" %></span>
-  </div>
+<p>ステータスを選択してください:</p>
+<label class="switch">
+  <%= check_box_tag "visibility_toggle", "", @clothing.visible?, 
+        id: "visibility_toggle", class: "toggle-checkbox", data: { clothing_id: @clothing.id } %>
+  <span class="slider round"></span>
+</label>
+<span id="toggle-label"><%= @clothing.visible? ? "表示" : "非表示" %></span>
 
-  <%= f.submit "更新", class: "btn btn-primary" %> 
-<% end %> 
 
 
 

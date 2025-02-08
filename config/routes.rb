@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       get 'brand_check'   
     end
     member do
-      patch :update_visibility
+      patch :toggle_visibility
     end
     resources :purchases, only: [:new, :create, :index]
   end
