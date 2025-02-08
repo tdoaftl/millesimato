@@ -29,17 +29,20 @@
     <p>素材: <%= @clothing.material.name %></p>
     <p>MADE IN: <%= @clothing.made_in.name %></p>
 
-<%# <%= form_with model: @clothing, url: update_visibility_product_path(@clothing), method: :patch, remote: true do |f| %>
-  <%# <label> %>
-    <%# <%= f.radio_button :visible, true, checked: @clothing.visible? %> 
-    <%# 表示 %>
-  <%# </label> %>
-  <%# <label> %>
-    <%# <%= f.radio_button :visible, false, checked: !@clothing.visible? %> 
-    <%# 非表示 %>
-  <%# </label> %>
-  <%# <%= f.submit "更新", class: "btn btn-primary" %> 
-<%# <% end %> 
+<%= form_with model: @clothing, local: true, html: { class: "clothing-form" } do |f| %> 
+  <div class="form-group">
+    <p>ステータスを選択してください:</p>
+    <label class="switch">
+      <%= f.check_box :visibility, { id: "visibility_toggle", class: "toggle-checkbox" }, "visible", "hidden" %>
+      <span class="slider round"></span>
+    </label>
+    <span id="toggle-label"><%= @clothing.visible? ? "表示" : "非表示" %></span>
+  </div>
+
+  <%= f.submit "更新", class: "btn btn-primary" %> 
+<% end %> 
+
+
 
  <% unless Purchase.exists?(clothing_id: @clothing.id) %>
     <% if user_signed_in? %>

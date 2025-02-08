@@ -116,16 +116,7 @@
 </fieldset>
 
 
-    <div> 
-      <p>ステータスを選択してください:</p>
-      <%= f.radio_button :visibility, :visible, id: "visibility_visible" %>
-      <%= f.label :visibility, "表示", for: "visibility_visible" %> 
-    </div>
 
-    <div>
-      <%= f.radio_button :visibility, :hidden, id: "visibility_hidden" %>
-      <%= f.label :visibility, "非表示", for: "visibility_hidden" %>
-    </div> 
 
     <br> <%= f.submit "編集する", class: "clothing-register-btn" %> 
   <% end %> 
