@@ -24,7 +24,7 @@ document.addEventListener("turbo:load", function() {
       .then(response => response.json())
       .then(data => {
         // トグルの状態に応じてラベルを更新
-        label.textContent = data.visibility === "visible" ? "表示" : "非表示";
+        label.textContent = data.visibility === "visible" ? "公開" : "非公開";
 
         // 非表示ラベルを切り替える
         updateVisibilityLabel();

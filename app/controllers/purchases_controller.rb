@@ -1,7 +1,6 @@
 class PurchasesController < ApplicationController
   def index
  
-
   end
   
   
@@ -35,7 +34,7 @@ class PurchasesController < ApplicationController
       redirect_to clothing_purchases_path
     else
       gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

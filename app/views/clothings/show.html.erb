@@ -34,14 +34,16 @@
     <p>素材: <%= @clothing.material.name %></p>
     <p>MADE IN: <%= @clothing.made_in.name %></p>
 
-<p>ステータスを選択してください:</p>
+
+ <% if current_user&.admin? %> 
+<p>公開ステータス:</p>
 <label class="switch">
   <%= check_box_tag "visibility_toggle", "", @clothing.visible?, 
         id: "visibility_toggle", class: "toggle-checkbox", data: { clothing_id: @clothing.id } %>
   <span class="slider round"></span>
 </label>
-<span id="toggle-label"><%= @clothing.visible? ? "表示" : "非表示" %></span>
-
+<span id="toggle-label"><%= @clothing.visible? ? "公開" : "非公開" %></span>
+<% end %>
 
 
 
