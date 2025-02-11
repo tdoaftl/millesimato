@@ -536,5 +536,30 @@ input:checked + .slider:before {
 }
 
 
-//-------------非表示ラベル------------------------
+//-------------ユーザーサイドバー------------------------
 
+
+.sidebar {
+  margin-top: 60px;
+  width: 250px;
+  height: 100vh;
+  background-color: #f8f9fa;
+  padding: 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 15px;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #333;
+}
