@@ -6,7 +6,38 @@
       <%= render "shared/user_sidebar" %>
     </div>
     <div class="user-container">
-      <p>Hello <%= current_user.nickname %>さん</p>
+        <p>ニックネーム：<%= current_user.nickname %></p>
+        <p>e-mail：<%= current_user.email %></p>
+        <p>誕生日：<%= current_user.birthday %></p>
+        <% if current_user.information.present? %>
+      <div class="d-flex mb-3">
+        <div class="w-50 pe-2">
+          <%= current_user.information.last_name_kana %>
+          <%= current_user.information.first_name_kana %>
+        </div>
+       </div>
+       <div class="d-flex mb-3">
+        <div class="w-50 pe-2">
+          氏名：<%= current_user.information.last_name %>
+              <%= current_user.information.first_name %>
+       </div>
+     </div>
+
+     <div class="d-flex mb-3">
+        <div class="w-50 pe-2">
+        <p>〒：<%= current_user.information.post_code %></p>
+        住所：<%= current_user.information.prefecture.name %>
+        <%= current_user.information.city %>
+        <%= current_user.information.address %>
+        <%= current_user.information.building %>
+        </div>
+     </div>
+
+        <p>TEL：<%= current_user.information.phone_number %></p>
+
+      <% else %>
+        <p>ユーザー情報未登録</p>
+      <% end %>
     </div>
   </div>
 </main>

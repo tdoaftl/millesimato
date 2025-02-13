@@ -37,12 +37,13 @@
 
  <% if current_user&.admin? %> 
 <p>公開ステータス:</p>
+<span id="toggle-label"><%= @clothing.visible? ? "公開" : "非公開" %></span>
 <label class="switch">
   <%= check_box_tag "visibility_toggle", "", @clothing.visible?, 
         id: "visibility_toggle", class: "toggle-checkbox", data: { clothing_id: @clothing.id } %>
   <span class="slider round"></span>
 </label>
-<span id="toggle-label"><%= @clothing.visible? ? "公開" : "非公開" %></span>
+
 <% end %>
 
 
