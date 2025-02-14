@@ -1,5 +1,12 @@
+ <!-- 管理者画面表示 -->
+ <% if current_user&.admin? %>   
+       <%= render "shared/admin_sidebar" %>
+<% else %>
+<!-- ユーザー画面表示 -->
 <%= render "shared/header" %>
 <main>
+<% end %>
+
 <div class="clothing-detail d-flex justify-content-center align-items-center">
   <!-- 画像エリア -->
   <div class="clothing-image-wrapper">
@@ -60,4 +67,5 @@
     <% end %>
   </div>
 </div>
+
 </main>

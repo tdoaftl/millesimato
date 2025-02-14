@@ -1,5 +1,4 @@
 const brand_pulldown = () => {
-  
   const searchBox = document.getElementById('brand-search-box');
   const searchResults = document.getElementById('brand-search-results');
 
@@ -34,6 +33,19 @@ const brand_pulldown = () => {
             if (checkbox) {
               checkbox.checked = true;
 
+             // brandのfilter-checkboxのうち、チェックがついているものをカウント
+                 const checkedBrandCheckboxes = document.querySelectorAll('.filter-checkbox[data-filter="brand"]:checked');
+                 const checkedCount = checkedBrandCheckboxes.length;
+
+
+            // カウント表示
+                const brandCountSpan = document.getElementById('brand-count');
+                if (brandCountSpan) {
+                 brandCountSpan.textContent = checkedCount > 0 ? checkedCount : "";
+                 brandCountSpan.style.visibility = checkedCount > 0 ? "visible" : "hidden";
+                }
+
+              
               // total.jsに値を渡す
               document.dispatchEvent(
                 new CustomEvent('checkboxUpdated', {

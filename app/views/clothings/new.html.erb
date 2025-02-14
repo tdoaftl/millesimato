@@ -1,4 +1,6 @@
-<div class="clothing-form-container">
+       <%= render "shared/admin_sidebar" %>
+       
+       <div class="clothing-form-container">
   <h2>商品登録</h2>
   <%= form_with model: @clothing, local: true, html: { class: "clothing-form" } do |f| %> 
     <%= f.file_field :image %>
