@@ -5,7 +5,9 @@
   <div class="container">
 
   <%= form_with model: @purchase_delivery, url: clothing_purchases_path(@clothing), id: 'charge-form', local: true do |f| %>
-    <div class="d-flex justify-content-between">
+    <%= render 'shared/error_messages', model: f.object %>
+    
+     <div class="d-flex justify-content-between">
       <!-- 左側：ユーザー情報 -->
       <div class="w-50 pe-3">
         <!-- 姓と名を横並び -->
