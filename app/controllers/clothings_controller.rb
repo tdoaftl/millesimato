@@ -13,7 +13,9 @@ class ClothingsController < ApplicationController
     @clothing = Clothing.new(item_params)
     if @clothing.save
     redirect_to root_path
-    else   
+    
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -31,7 +33,7 @@ class ClothingsController < ApplicationController
     if @clothing.update(item_params)
       redirect_to clothing_path
     else
-      
+      render :edit, status: :unprocessable_entity
     end
   end  
 

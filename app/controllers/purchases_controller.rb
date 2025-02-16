@@ -1,7 +1,6 @@
 class PurchasesController < ApplicationController
   def index
  
-
   end
   
   
@@ -29,13 +28,15 @@ class PurchasesController < ApplicationController
   def create
     @clothing = Clothing.find(params[:clothing_id])
     @purchase_delivery = PurchaseDelivery.new(purchase_delivery_params)
+
     if @purchase_delivery.valid?
+      
       pay_item
       @purchase_delivery.save
       redirect_to clothing_purchases_path
     else
       gon.public_key = ENV["PAYJP_PUBLIC_KEY"]
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

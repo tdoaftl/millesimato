@@ -1,10 +1,17 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= render "shared/header" %>
+<main>
+  <div class="main-container">
+    <div class="side-container">
+      <%= render "shared/user_sidebar" %>
+    </div>
+    <div class="user-container">
 
 <%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <%= f.label :nickname %><br />
-<%= f.text_area :nickname,  id:"nickname", maxlength:"40" %>
+<%= f.text_field :nickname,  id:"nickname", maxlength:"40" %>
 
   <div class="field">
     <%= f.label :email %><br />
@@ -35,12 +42,10 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "変更" %>
   </div>
 <% end %>
 
-<h3>Cancel my account</h3>
-
-<div>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete %></div>
-
-<%= link_to "Back", :back %>
+</div>
+ </div>
+</main>

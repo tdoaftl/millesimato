@@ -59,13 +59,11 @@ main {
 
 
 
-
-
 .dropdown-toggle:not(:focus) {
   outline: 0;
 }
 
-
+//--------------カルーセル
 
 #myCarousel {
   height: 550px; /* カルーセル全体の高さを固定 */
@@ -210,14 +208,14 @@ main {
 
 //-------------------------------------------------------------
 /* ユーザー登録フォーム */
-.registration-form {
-  width: 60%;  /* 幅を6割に設定 */
-  margin: 0 auto;  /* 中央配置 */
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+// .registration-form {
+
+//   margin: 0 auto;  /* 中央配置 */
+
+//   background-color: #f9f9f9;
+
+//   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+// }
 
 h2 {
   text-align: center;
@@ -536,5 +534,102 @@ input:checked + .slider:before {
 }
 
 
-//-------------非表示ラベル------------------------
+//-------------ユーザーサイドバー------------------------
 
+
+.sidebar {
+
+  width: 250px;
+  height: 100vh;
+  background-color: #f8f9fa;
+  padding: 20px;
+  position: fixed;
+
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 15px;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+
+.main-container {
+  max-width: 1200px; 
+  margin: 0 auto; /* 左右中央寄せ */
+  display: flex; 
+  gap: 20px; /* 要素間の余白 */
+  padding: 20px;
+}
+
+
+.side-container {
+  width: 250px;
+  height: 100vh;
+  display: flex;
+
+}
+
+.user-container {
+  width: 65%; /* 右側の幅 */
+  background-color: #f8f9fa;
+  padding: 20px;
+
+}
+
+
+#toggle-label {
+  display: inline-block; /* インライン要素の幅を調整 */
+  width: 50px; /* 文字数の違いによるズレを防ぐ */
+  text-align: center; /* 文字を中央揃え */
+}
+
+//-----------商品登録ボタン
+.clothing-registration-btn {
+  width: 200px;
+  height: 200px;
+  background: #f8f9fa;
+  text-align: center;
+  border-radius: 4%;
+  bottom: 32px;
+  right: 32px;
+  position: fixed;
+
+}
+
+.clothing-registration-btn-text {
+  color: black;
+  display: block;
+  font-size: 18px;
+  text-decoration: none;
+
+}
+
+.clothing-registration-btn-icon {
+  width: 80%;
+  height: 80%;
+}
+
+//------チェック数カウント
+.count-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px; /* 円のサイズ */
+  height: 20px; 
+  background-color: black;
+  color: white; 
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 50%; /* 丸くする */
+  margin-left: 8px; /* 余白 */
+  visibility: hidden; /* 初期状態では非表示 */
+}

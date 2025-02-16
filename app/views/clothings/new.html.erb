@@ -1,6 +1,11 @@
-<div class="clothing-form-container">
+       <%= render "shared/admin_sidebar" %>
+       
+       
+       <div class="clothing-form-container">
   <h2>商品登録</h2>
   <%= form_with model: @clothing, local: true, html: { class: "clothing-form" } do |f| %> 
+    <%= render 'shared/error_messages', model: f.object %>
+    
     <%= f.file_field :image %>
 
     <br> アイテム<%= f.text_field :item, placeholder:"アイテム名" %>
@@ -116,16 +121,17 @@
 </fieldset>
 
 
-    <div> 
-      <p>ステータスを選択してください:</p>
-      <%= f.radio_button :visibility, :visible, id: "visibility_visible", checked: @clothing.visibility.nil? %>
-      <%= f.label :visibility, "表示", for: "visibility_visible" %> 
-    </div>
+<div> 
+  <p>ステータスを選択してください:</p>
+  <%= f.radio_button :visibility, :visible, id: "visibility_visible", checked: (@clothing.visibility.nil? || @clothing.visibility.to_s == "visible") %>
+  <%= f.label :visibility, "表示", for: "visibility_visible" %> 
+</div>
 
-    <div>
-      <%= f.radio_button :visibility, :hidden, id: "visibility_hidden" %>
-      <%= f.label :visibility, "非表示", for: "visibility_hidden" %>
-    </div> 
+<div>
+  <%= f.radio_button :visibility, :hidden, id: "visibility_hidden", checked: (@clothing.visibility.to_s == "hidden") %>
+  <%= f.label :visibility, "非表示", for: "visibility_hidden" %>
+</div>
+
 
     <br> <%= f.submit "商品登録", class: "clothing-register-btn" %> 
   <% end %> 
