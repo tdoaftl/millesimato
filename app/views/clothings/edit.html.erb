@@ -2,7 +2,8 @@
 <div class="clothing-form-container">
   <h2>商品編集</h2>
   <%= form_with model: @clothing, local: true, html: { class: "clothing-form" } do |f| %> 
-    <%= f.file_field :image %>
+     <%= render 'shared/error_messages', model: f.object %>
+     <%= f.file_field :image %>
 
     <br> アイテム<%= f.text_field :item, placeholder:"アイテム名" %>
     <br> 説明<%= f.text_field :description, placeholder:"説明" %>
