@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_01_17_075107) do
+ActiveRecord::Schema[7.0].define(version: 2025_02_17_144221) do
   create_table "active_storage_attachments", charset: "utf8mb3", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
@@ -76,6 +76,15 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_17_075107) do
     t.index ["purchase_id"], name: "index_deliveries_on_purchase_id"
   end
 
+  create_table "favorites", charset: "utf8mb3", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "clothing_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["clothing_id"], name: "index_favorites_on_clothing_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
   create_table "information", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "last_name"
     t.string "first_name"
@@ -121,6 +130,8 @@ ActiveRecord::Schema[7.0].define(version: 2025_01_17_075107) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "clothings", "users"
   add_foreign_key "deliveries", "purchases"
+  add_foreign_key "favorites", "clothings"
+  add_foreign_key "favorites", "users"
   add_foreign_key "information", "users"
   add_foreign_key "purchases", "clothings"
   add_foreign_key "purchases", "users"

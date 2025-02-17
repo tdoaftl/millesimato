@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :clothings
   has_many :purchases  
   has_one :information, dependent: :destroy
+  has_many :favorites
 
 
 

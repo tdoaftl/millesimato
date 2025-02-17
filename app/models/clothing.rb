@@ -2,6 +2,7 @@ class Clothing < ApplicationRecord
   has_one_attached :image
   has_many :purchase
   belongs_to :user
+  has_many :favorites
 
    # 商品ステータス    表示: 0, 非表示: 1
    enum visibility: { visible: 0, hidden: 1 }  
@@ -13,6 +14,10 @@ class Clothing < ApplicationRecord
 
   def invisible?   #非表示かどうか
     hidden?
+  end
+
+  def favorite_by?(user)     #お気に入り済みかどうか
+    favorites.where(user_id: user.id).exists?
   end
 
  
