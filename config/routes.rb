@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     end
     resources :purchases, only: [:new, :create, :index]
     resource :favorites, only: [:create, :destroy]
+    get 'favorites/:id', to: 'favorites#'
   end
 
 
