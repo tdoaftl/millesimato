@@ -30,7 +30,7 @@
   <div class="clothing-info">
 
       <div id="favorite-btn<%= @clothing.id %>">
-       <% unless current_user.admin? %> 
+       <% unless current_user&.admin? %> 
          <% if user_signed_in? && @clothing.favorite_by?(current_user)%>
              <%=link_to "お気に入り済", clothing_favorites_path(@clothing),  data: { turbo_method: :delete }, class: "clothing_favorites" %>
          <% else %>
