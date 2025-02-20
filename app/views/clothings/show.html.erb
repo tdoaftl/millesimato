@@ -30,11 +30,13 @@
   <div class="clothing-info">
 
       <div id="favorite-btn<%= @clothing.id %>">
-    <% if user_signed_in? && @clothing.favorite_by?(current_user)%>
-      <%=link_to "お気に入り済", clothing_favorites_path(@clothing),  data: { turbo_method: :delete }, class: "clothing_favorites" %>
-    <% else %>
-      <%=link_to "お気に入り登録", clothing_favorites_path(@clothing), data: { turbo_method: :post }, class: "clothing_favorites" %>
-    <% end %>
+       <% unless current_user.admin? %> 
+         <% if user_signed_in? && @clothing.favorite_by?(current_user)%>
+             <%=link_to "お気に入り済", clothing_favorites_path(@clothing),  data: { turbo_method: :delete }, class: "clothing_favorites" %>
+         <% else %>
+             <%=link_to "お気に入り登録", clothing_favorites_path(@clothing), data: { turbo_method: :post }, class: "clothing_favorites" %>
+         <% end %>
+       <% end %> 
   </div>
 
     <h2><%= @clothing.item %></h2>

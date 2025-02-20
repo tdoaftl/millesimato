@@ -1,5 +1,6 @@
 <aside class="sidebar">
   <ul>
+    <li><%= link_to 'ログアウト', destroy_user_session_path, data: { turbo_method: :delete } %></li>
     <li><%= link_to "商品一覧", root_path %></li>
   </ul>
 
