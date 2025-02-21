@@ -7,7 +7,8 @@ class User < ApplicationRecord
   has_many :clothings
   has_many :purchases  
   has_one :information, dependent: :destroy
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
+  has_many :favorite_clothings, through: :favorites, source: :clothing
 
 
 

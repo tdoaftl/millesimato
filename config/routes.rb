@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "clothings#index"
+
   resources :clothings do
     collection do
       post 'search_all' 
@@ -10,10 +11,9 @@ Rails.application.routes.draw do
       patch :toggle_visibility
     end
     resources :purchases, only: [:new, :create, :index]
-    resource :favorites, only: [:create, :destroy]
-    # get 'favorites/:id', to: 'favorites#'
+    
   end
-
+  resources :favorites, only: [:index, :create, :destroy]
 
 
     resources :users , only: [:index] do
@@ -22,6 +22,7 @@ Rails.application.routes.draw do
         post 'informations', to: 'users#create', as: 'create_information'
         get 'informations/edit', to: 'users#edit', as: 'edit_information'
         patch  'informations', to: 'users#update', as: 'update_information'
+
   end
 end
 end

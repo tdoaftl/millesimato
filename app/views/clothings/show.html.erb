@@ -29,15 +29,21 @@
   <!-- 情報エリア -->
   <div class="clothing-info">
 
-      <div id="favorite-btn<%= @clothing.id %>">
+      <p id="favorite-btn<%= @clothing.id %>">
         <% if user_signed_in? && !current_user.admin? %> 
            <% if @clothing.favorite_by?(current_user) %>
-              <%= link_to "お気に入り済", clothing_favorites_path(@clothing), data: { turbo_method: :delete }, class: "clothing_favorites" %>
-           <% else %>
-             <%= link_to "お気に入り登録", clothing_favorites_path(@clothing), data: { turbo_method: :post }, class: "clothing_favorites" %>
-           <% end %>
+                 <%# お気に入り済み %>
+                 <%= link_to clothing_favorites_path(@clothing), data: { turbo_method: :delete }, class: "clothing_favorites text-warning" do %>
+                     <i class="bi bi-star-fill"></i>
+                 <% end %>
+          <% else %>
+                 <%# お気に入り登録 %>
+                 <%= link_to clothing_favorites_path(@clothing), data: { turbo_method: :post }, class: "clothing_favorites text-dark" do %>
+                     <i class="bi bi-star"></i> 
+                 <% end %>
+          <% end %>
         <% end %> 
-  </div>
+      </p>
 
     <h2><%= @clothing.item %></h2>
     <p><%= @clothing.description %></p>

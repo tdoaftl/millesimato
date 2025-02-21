@@ -12,4 +12,9 @@ class FavoritesController < ApplicationController
     favorite.destroy
     redirect_to clothing_path(@clothing.id)
   end
+
+  def index
+    @clothing = Clothing.find(params[:clothing_id])
+    @favorite_clothings = current_user.favorite_clothings
+  end
 end
