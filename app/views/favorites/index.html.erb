@@ -1,21 +1,31 @@
-<h2>お気に入り一覧</h2>
+<%= render "shared/header" %>
 
-<% if @favorite_clothings.any? %>
+<main>
+  <div class="main-container">
+    <div class="side-container">
+      <%= render "shared/user_sidebar" %>
+    </div> 
+ 
+ <div class="user-container">
   <div class="row">
-    <% @favorite_clothings.each do |clothing| %>
+  <% @favorite_clothings.each do |clothing| %>
       <div class="col-md-4">
         <div class="card">
           <%= image_tag clothing.image, class: "card-img-top" %>
           <div class="card-body">
             <h5 class="card-title"><%= clothing.item %></h5>
-            <p class="card-text"><%= clothing.description %></p>
+            <p class="card-text">¥<%= clothing.price %></p>
             <%= link_to "詳細を見る", clothing_path(clothing), class: "btn btn-primary" %>
             <%= link_to "お気に入り解除", clothing_favorites_path(clothing), method: :delete, class: "btn btn-danger" %>
           </div>
         </div>
       </div>
     <% end %>
-  </div>
-<% else %>
-  <p>お気に入りの商品はありません。</p>
-<% end %>
+    </div>
+     </div>
+     </div>
+</main>
+
+
+
+

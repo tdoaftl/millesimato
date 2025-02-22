@@ -11,9 +11,10 @@ Rails.application.routes.draw do
       patch :toggle_visibility
     end
     resources :purchases, only: [:new, :create, :index]
+    resources :favorites, only: [:index, :create, :destroy]
     
   end
-  resources :favorites, only: [:index, :create, :destroy]
+ 
 
 
     resources :users , only: [:index] do
