@@ -633,3 +633,9 @@ input:checked + .slider:before {
   margin-left: 8px; /* 余白 */
   visibility: hidden; /* 初期状態では非表示 */
 }
+
+.clothing-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
