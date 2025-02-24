@@ -8,25 +8,29 @@
  
  <div class="user-container">
 <div class="row">
-  <% @favorite_clothings.each do |clothing| %>
-    <div class="col-md-4">
-      <div class="card">
-        <%= link_to clothing_path(clothing) do %>
-          <% if clothing.image.attached? %>
-            <%= image_tag clothing.image, class: "card-img-top clothing-img #{'hidden-image' if clothing.invisible?}" %>
-          <% else %>
-            <%= image_tag "dummy.png", class: "card-img-top clothing-img #{'hidden-image' if clothing.invisible?}" %>
-          <% end %>
+<% @favorite_clothings.each do |clothing| %>
+  <% favorite = current_user.favorites.find_by(clothing_id: clothing.id) %>
+  <div class="col-md-4">
+    <div class="card">
+      <%= link_to clothing_path(clothing) do %>
+        <% if clothing.image.attached? %>
+          <%= image_tag clothing.image, class: "card-img-top clothing-img" %>
+        <% else %>
+          <%= image_tag "dummy.png", class: "card-img-top clothing-img" %>
         <% end %>
-        <div class="card-body">
-          <h5 class="card-title"><%= clothing.item %></h5>
-          <p class="card-text">¥<%= clothing.price %></p>
-          <%= link_to "お気に入り解除", clothing_favorites_path(clothing), method: :delete, class: "btn btn-danger" %>
-        </div>
+      <% end %>
+      <div class="card-body">
+        <h5 class="card-title"><%= clothing.item %></h5>
+        <p class="card-text">¥<%= clothing.price %></p>
+
+        <%= link_to "お気に入り解除", clothing_favorites_path(clothing), method: :delete, data: { turbo_method: :delete }, class: "btn btn-danger" %>
       </div>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>
+
+
+
 
      </div>
      </div>

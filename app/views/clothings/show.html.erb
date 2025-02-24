@@ -28,22 +28,21 @@
 
   <!-- 情報エリア -->
   <div class="clothing-info">
-
-      <p id="favorite-btn<%= @clothing.id %>">
-        <% if user_signed_in? && !current_user.admin? %> 
-           <% if @clothing.favorite_by?(current_user) %>
-                 <%# お気に入り済み %>
-                 <%= link_to clothing_favorites_path(@clothing), data: { turbo_method: :delete }, class: "clothing_favorites text-warning" do %>
-                     <i class="bi bi-star-fill"></i>
-                 <% end %>
-          <% else %>
-                 <%# お気に入り登録 %>
-                 <%= link_to clothing_favorites_path(@clothing), data: { turbo_method: :post }, class: "clothing_favorites text-dark" do %>
-                     <i class="bi bi-star"></i> 
-                 <% end %>
-          <% end %>
-        <% end %> 
-      </p>
+<p id="favorite-btn<%= @clothing.id %>">
+  <% if user_signed_in? && !current_user.admin? %> 
+    <% if @clothing.favorite_by?(current_user) %>
+      <%# お気に入り済み %>
+      <%= link_to clothing_favorite_path(@clothing), data: { turbo_method: :delete }, class: "clothing_favorites text-warning" do %>
+        <i class="bi bi-star-fill"></i>
+      <% end %>
+    <% else %>
+      <%# お気に入り登録 %>
+      <%= link_to clothing_favorites_path(@clothing), data: { turbo_method: :post }, class: "clothing_favorites text-dark" do %>
+        <i class="bi bi-star"></i> 
+      <% end %>
+    <% end %>
+  <% end %> 
+</p>
 
     <h2><%= @clothing.item %></h2>
     <p><%= @clothing.description %></p>
