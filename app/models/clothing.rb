@@ -11,6 +11,10 @@ class Clothing < ApplicationRecord
     purchase.present?  # Purchaseテーブルに紐づくレコードがあるかどうか
   end
 
+    # ユーザーがお気に入りにしているかどうか
+    def has_favorite?
+      favorite_clothings.exists?
+    end
 
   def invisible?   #非表示かどうか
     hidden?

@@ -9,40 +9,53 @@
 
 <div class="clothing-detail d-flex justify-content-center align-items-center">
   <!-- 画像エリア -->
-  <div class="clothing-image-wrapper">
+      
+
+      
+
+    <div class="position-relative">
+    <div class="clothing-image">
       <% if @clothing.sold? %>
         <div class="sold-label">SOLD</div>  <!-- 売り切れラベル -->
       <% end %>
 
-      <% if @clothing.invisible? %>
+    <% if @clothing.invisible? %>
         <div class="hidden-badge">invisible</div>  <!-- 非表示ラベル -->
       <% end %>
-  <div class="clothing-image">
-    <% if @clothing.image.attached? %>
-      <%= image_tag @clothing.image, class: "clothing-img #{'hidden-image' if @clothing.invisible?}" %>
-    <% else %>
-      <%= image_tag "dummy.png", class: "clothing-img #{'hidden-image' if @clothing.invisible?}" %>
-    <% end %>
-  </div>
+
+      <% if @clothing.image.attached? %>
+        <%= image_tag @clothing.image, class: "clothing-img #{'hidden-image' if @clothing.invisible?}" %>
+      <% else %>
+        <%= image_tag "dummy.png", class: "clothing-img #{'hidden-image' if @clothing.invisible?}" %>
+      <% end %>
+
+      <!-- お気に入りボタンを右上に配置 -->
+      <div class="favorite-delete-button">
+        <div id="favorite-btn<%= @clothing.id %>">
+          <% if user_signed_in? && !current_user.admin? %> 
+            <% if @clothing.favorite_by?(current_user) %>
+              <%= form_with url: clothing_favorite_path(@clothing), method: :delete, data: { turbo_method: :delete }, class: "d-inline" do %>
+                <%= hidden_field_tag :from, "item" %>
+                <button type="submit" class="clothing_favorites text-warning border-0 bg-transparent">
+                  <i class="bi bi-star-fill fs-1"></i>
+                </button>
+              <% end %>
+            <% else %>
+              <%= form_with url: clothing_favorites_path(@clothing), method: :post, data: { turbo: true }, class: "d-inline" do %>
+                <button type="submit" class="clothing_favorites text-muted border-0 bg-transparent">
+                  <i class="bi bi-star-fill fs-1"></i>
+                </button>
+              <% end %>
+            <% end %>
+          <% end %> 
+        </div>
+      </div>
     </div>
+  </div>
+
 
   <!-- 情報エリア -->
   <div class="clothing-info">
-<p id="favorite-btn<%= @clothing.id %>">
-  <% if user_signed_in? && !current_user.admin? %> 
-    <% if @clothing.favorite_by?(current_user) %>
-      <%# お気に入り済み %>
-      <%= link_to clothing_favorite_path(@clothing), data: { turbo_method: :delete }, class: "clothing_favorites text-warning" do %>
-        <i class="bi bi-star-fill"></i>
-      <% end %>
-    <% else %>
-      <%# お気に入り登録 %>
-      <%= link_to clothing_favorites_path(@clothing), data: { turbo_method: :post }, class: "clothing_favorites text-dark" do %>
-        <i class="bi bi-star"></i> 
-      <% end %>
-    <% end %>
-  <% end %> 
-</p>
 
     <h2><%= @clothing.item %></h2>
     <p><%= @clothing.description %></p>

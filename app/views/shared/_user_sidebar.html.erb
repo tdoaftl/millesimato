@@ -1,8 +1,9 @@
 <aside class="sidebar">
 
   <h1>Hello</h1>
-   <p><%= link_to "#{current_user.nickname}さん", users_path %></p>
+   <p><%="#{current_user.nickname}"%>さん</p>
   <ul>
+    <li><%= link_to 'ユーザー情報', users_path %></li>
     <li><%= link_to 'お気に入り表示', favorites_users_path %></li>
     <li><%= link_to 'ログイン情報編集', edit_user_registration_path %></li>
     <% if current_user.information.present? %>

@@ -1,22 +1,10 @@
-<div class="made_in-filter">
-  <ul class="list-unstyled ps-0">
-    <li class="mb-1">
-      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-        data-bs-toggle="collapse" data-bs-target="#made_in-collapse" aria-expanded="false">
-        MadeIn <span id="made_in-count" class="ms-2">(0)</span> 
-      </button>
-      <div class="collapse" id="made_in-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-          <% MadeIn.where.not(id: 1).each do |made_in| %>
-            <li>
-              <div>
-                <%= check_box_tag "made_in_#{made_in.id}", made_in.id, false, class: "filter-checkbox", data: { filter: 'made_in' } %> 
-                <%= made_in.name %>
-              </div>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </li>
-  </ul>
-</div>
+<button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+        data-bs-toggle="collapse" data-bs-target="#brand-collapse" aria-expanded="false">
+  <i class="bi bi-caret-right-fill toggle-icon me-2"></i> 
+  <span>Brand</span> 
+  <span class="count-circle ms-2"></span>
+</button>
+
+            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#brand-collapse" aria-expanded="false">
+              Brand<span id="brand-count" class="count-circle ms-2"></span>
+            </button>

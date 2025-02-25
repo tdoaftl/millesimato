@@ -73,9 +73,12 @@
       <div class="brand-filter">
         <ul class="list-unstyled ps-0">
           <li class="mb-1">
-            <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#brand-collapse" aria-expanded="false">
-              Brand<span id="brand-count" class="count-circle ms-2"></span>
-            </button>
+<button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+        data-bs-toggle="collapse" data-bs-target="#brand-collapse" aria-expanded="false">
+  <i class="bi bi-caret-right-fill toggle-icon me-2"></i> 
+  <span>Brand</span><span id="brand-count" class="count-circle ms-2"></span>
+  <span class="count-circle ms-2"></span>
+</button>
             <div class="collapse brand-collapse position-absolute bg-white p-3" id="brand-collapse">
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small d-flex flex-wrap">
                 <% Brand.where.not(id: 1).each do |brand| %>
@@ -128,12 +131,14 @@
 <div class="category-filter">
   <ul class="list-unstyled ps-0">
     <li class="mb-1">
-      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+<button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
         data-bs-toggle="collapse" data-bs-target="#category-collapse" aria-expanded="false">
-        Category <span id="category-count" class="count-circle ms-2"></span> 
-      </button>
+  <i class="bi bi-caret-right-fill toggle-icon me-2"></i> 
+  <span>Category</span><span id="category-count" class="count-circle ms-2"></span>
+  <span class="count-circle ms-2"></span>
+</button>
       <div class="collapse" id="category-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ps-3">
           <% Category.where.not(id: 1).each do |category| %>
             <li>
               <div>
@@ -151,12 +156,14 @@
 <div class="size-filter">
   <ul class="list-unstyled ps-0">
     <li class="mb-1">
-      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+<button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
         data-bs-toggle="collapse" data-bs-target="#size-collapse" aria-expanded="false">
-        Size <span id="size-count" class="count-circle ms-2"></span> 
-      </button>
+  <i class="bi bi-caret-right-fill toggle-icon me-2"></i> 
+  <span>Size</span><span id="size-count" class="count-circle ms-2"></span>
+  <span class="count-circle ms-2"></span>
+</button>
       <div class="collapse" id="size-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ps-3">
           <% Size.where.not(id: 1).each do |size| %>
             <li>
               <div>
@@ -174,12 +181,14 @@
 <div class="era-filter">
   <ul class="list-unstyled ps-0">
     <li class="mb-1">
-      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+<button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
         data-bs-toggle="collapse" data-bs-target="#era-collapse" aria-expanded="false">
-        Era <span id="era-count" class="count-circle ms-2"></span> 
-      </button>
+  <i class="bi bi-caret-right-fill toggle-icon me-2"></i> 
+  <span>Era</span><span id="era-count" class="count-circle ms-2"></span>
+  <span class="count-circle ms-2"></span>
+</button>
       <div class="collapse" id="era-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ps-3">
           <% Era.where.not(id: 1).each do |era| %>
             <li>
               <div>
@@ -197,12 +206,14 @@
 <div class="gender-filter">
   <ul class="list-unstyled ps-0">
     <li class="mb-1">
-      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+<button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
         data-bs-toggle="collapse" data-bs-target="#gender-collapse" aria-expanded="false">
-        Gender <span id="gender-count" class="count-circle ms-2"></span> 
-      </button>
+  <i class="bi bi-caret-right-fill toggle-icon me-2"></i> 
+  <span>Gender</span><span id="gender-count" class="count-circle ms-2"></span>
+  <span class="count-circle ms-2"></span>
+</button>
       <div class="collapse" id="gender-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ps-3">
           <% Gender.where.not(id: 1).each do |gender| %>
             <li>
               <div>
@@ -220,12 +231,14 @@
 <div class="color-filter">
   <ul class="list-unstyled ps-0">
     <li class="mb-1">
-      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+<button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
         data-bs-toggle="collapse" data-bs-target="#color-collapse" aria-expanded="false">
-        Color <span id="color-count" class="count-circle ms-2"></span> 
-      </button>
+  <i class="bi bi-caret-right-fill toggle-icon me-2"></i> 
+  <span>Color</span><span id="color-count" class="count-circle ms-2"></span>
+  <span class="count-circle ms-2"></span>
+</button>
       <div class="collapse" id="color-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ps-3">
           <% Color.where.not(id: 1).each do |color| %>
             <li>
               <div>
@@ -244,12 +257,14 @@
 <div class="condition-filter">
   <ul class="list-unstyled ps-0">
     <li class="mb-1">
-      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+<button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
         data-bs-toggle="collapse" data-bs-target="#condition-collapse" aria-expanded="false">
-        Condition <span id="condition-count" class="count-circle ms-2"></span> 
-      </button>
+  <i class="bi bi-caret-right-fill toggle-icon me-2"></i> 
+  <span>Condition</span><span id="condition-count" class="count-circle ms-2"></span>
+  <span class="count-circle ms-2"></span>
+</button>
       <div class="collapse" id="condition-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ps-3">
           <% Condition.where.not(id: 1).each do |condition| %>
             <li>
               <div>
@@ -267,12 +282,14 @@
 <div class="material-filter">
   <ul class="list-unstyled ps-0">
     <li class="mb-1">
-      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+<button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
         data-bs-toggle="collapse" data-bs-target="#material-collapse" aria-expanded="false">
-        Material <span id="material-count" class="count-circle ms-2"></span> 
-      </button>
+  <i class="bi bi-caret-right-fill toggle-icon me-2"></i> 
+  <span>Material</span><span id="material-count" class="count-circle ms-2"></span>
+  <span class="count-circle ms-2"></span>
+</button>
       <div class="collapse" id="material-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ps-3">
           <% Material.where.not(id: 1).each do |material| %>
             <li>
               <div>
@@ -290,12 +307,14 @@
 <div class="made_in-filter">
   <ul class="list-unstyled ps-0">
     <li class="mb-1">
-      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+<button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
         data-bs-toggle="collapse" data-bs-target="#made_in-collapse" aria-expanded="false">
-        MadeIn <span id="made_in-count" class="count-circle ms-2"></span> 
-      </button>
+  <i class="bi bi-caret-right-fill toggle-icon me-2"></i> 
+  <span>MadeIn</span><span id="made_in-count" class="count-circle ms-2"></span>
+  <span class="count-circle ms-2"></span>
+</button>
       <div class="collapse" id="made_in-collapse">
-        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ps-3">
           <% MadeIn.where.not(id: 1).each do |made_in| %>
             <li>
               <div>
@@ -313,10 +332,12 @@
 <div class="price-filter">
   <ul class="list-unstyled ps-0">
    <li class="mb-1">
-      <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" 
+<button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
         data-bs-toggle="collapse" data-bs-target="#price-collapse" aria-expanded="false">
-        Price
-      </button>
+  <i class="bi bi-caret-right-fill toggle-icon me-2"></i> 
+  <span>Price</span> 
+  <span class="count-circle ms-2"></span>
+</button>
       <div class="collapse" id="price-collapse">
         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
            <li>

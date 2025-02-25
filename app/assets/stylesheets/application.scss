@@ -639,3 +639,28 @@ input:checked + .slider:before {
   height: auto;
   object-fit: cover;
 }
+
+//お気に入り、削除ボタン
+.favorite-delete-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+}
+
+.clothing_favorites:hover {
+  opacity: 0.7;  /* 透明度50% */
+  transition: opacity 0.2s ease; /* なめらかに変化 */
+}
+
+//矢印
+.toggle-icon {
+  display: inline-block; /* 回転時にずれないように */
+  transition: transform 0.3s ease; /* 回転のアニメーション */
+}
+
+.rotate-open {
+  transform: rotate(90deg); /* 開いたときに90度回転 */
+}
+
+

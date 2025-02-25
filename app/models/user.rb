@@ -11,11 +11,9 @@ class User < ApplicationRecord
   has_many :favorite_clothings, through: :favorites, source: :clothing
   
 
-
-
-
   validates :nickname,          presence: true
   validates :birthday,          presence: true
+
 
 
    # デフォルトのロールを設定（新しいユーザーには `user` がデフォルト）
