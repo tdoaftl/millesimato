@@ -42,9 +42,9 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_26_144308) do
   create_table "cart_items", charset: "utf8mb3", force: :cascade do |t|
     t.bigint "cart_id", null: false
     t.bigint "clothing_id", null: false
-    t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cart_id", "clothing_id"], name: "index_cart_items_on_cart_id_and_clothing_id", unique: true
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
     t.index ["clothing_id"], name: "index_cart_items_on_clothing_id"
   end
